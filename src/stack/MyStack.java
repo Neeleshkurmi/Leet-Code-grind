@@ -20,7 +20,7 @@ public class MyStack<T> {
 
     public void push(T val){
         if(top==capacity-1) {
-            System.out.println("Stack overflow");
+            new StackException("stack is full can not add more elements");
             return;
         }
         data[++top] = val;
@@ -33,27 +33,31 @@ public class MyStack<T> {
         }
     }
 
-    T pop(){
+    T pop() throws StackException {
         if(top==-1){
-            System.out.println("stack is empty");
-            return null;
+            throw new StackException("can not pop from empty stack");
         }
         return data[top--];
     }
 
-    T peek(){
+    T peek() throws StackException {
+        if(top==-1){
+            throw new StackException("can not peek from empty stack");
+        }
         return data[top];
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws StackException {
         LinkedList<Integer> list = new LinkedList<>();
         MyStack<LinkedList<Integer>> m = new MyStack<>(2);
         LinkedList<Integer> list2 = new LinkedList<>();
-
+        m.peek();
         list.add(8); list.add(9); list2.add(7); list2.add(10);
         m.push(list);
         m.push(list2);
-        m.peek();
+        m.push(list);
+        m.push(list2);
+
         m.display();
 
     }
