@@ -24,11 +24,18 @@ public class Solution {
         return fibo(num-1) + fibo(num-2);
     }
 
+    public static int sumOfN(int num){
+        if(num==0) return 0;
+        return num+= sumOfN(num-1);
+    }
+
 
 
     public static void main(String[] args) {
-        printNumAsc(8);
-        printNumDesc(8);
+//        printNumAsc(8);
+//        printNumDesc(8);
+        int n=8;
+        System.out.println((n*(n+1))/2 ==sumOfN(n));
         System.out.println(fibo(5));  // 0,1,1,2,3,5 expected output -- 5
     }
 
