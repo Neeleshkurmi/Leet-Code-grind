@@ -1,0 +1,50 @@
+package Recursion;
+
+public class Solution {
+
+    public static void printNumAsc(int num){
+        if(num==0){
+            return;
+        }
+        printNumAsc(num-1);
+        System.out.println(num);
+    }
+
+    public static void printNumDesc(int num){
+        if(num==0){
+            return;
+        }
+        System.out.println(num);
+        printNumDesc(num-1);
+    }
+
+    public static int fibo(int num){
+        if(num==1 || num==0) return num==0 ?0:1;
+
+        return fibo(num-1) + fibo(num-2);
+    }
+
+
+
+    public static void main(String[] args) {
+        printNumAsc(8);
+        printNumDesc(8);
+        System.out.println(fibo(5));  // 0,1,1,2,3,5 expected output -- 5
+    }
+
+
+
+    /*
+    n =8
+
+        num(8)
+        -num(7)
+          -num(6)
+             -num(5)
+               -num(4)
+                -num(3)  -print(3) -return
+                  -num(2)  --print(2) -return
+                    -num(1) --print(1) -return
+                     -num(0)- return
+     */
+}
