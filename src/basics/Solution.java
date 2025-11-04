@@ -1,18 +1,67 @@
 package basics;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(binaryToDecimal(110101));
-        System.out.println(binaryToDecimal(100));
+        System.out.println(Arrays.toString(rootsOfEq(1,-5,6)));
+    }
+
+
+    static double[] rootsOfEq(int a, int bx, int c){
+        double dicriminent = Math.pow(bx, 2) - 4 * a * c;
+        double ans1 = -bx + Math.sqrt(dicriminent);
+        double ans2 = -bx - Math.sqrt(dicriminent);
+        return ans1==ans2 ? new double[] {ans1} : new double[] {ans2,ans1};
+    }
+
+
+    static int hexaDecimalToDecimal(String s){
+        s.toLowerCase();
+        int a = 10, A=10, b=11, B=11, c=12, C=12,d=13, e=14, E=14, f=15, F=15;
+        int ans =0, i=0;
+        for(int j=s.length()-1; j>=0; j--){
+            char ch = s.charAt(j);
+            if(ch=='a' || ch=='b' || ch =='c' || ch =='d' || ch=='e' || ch =='f') {
+                switch (ch) {
+                    case 'a':
+                        ans += (int) (a * Math.pow(16, i));
+                        break;
+                    case 'b':
+                        ans += (int) (b * Math.pow(16, i));
+                        break;
+                    case 'c':
+                        ans += (int) (c * Math.pow(16, i));
+                        break;
+                    case 'd':
+                        ans += (int) (d * Math.pow(16, i));
+                        break;
+                    case 'e':
+                        ans += (int) (e * Math.pow(16, i));
+                        break;
+                    case 'f':
+                        ans += (int) (f * Math.pow(16, i));
+                }
+            }
+            else {
+                ans += (int) ((ch-'0') * Math.pow(16, i));
+            }
+            i++;
+        }
+        return ans;
     }
 
     static int ocatalToDecimal(int n){
-
-        return 0;
+        int ans =0, i=0;
+        while (n>0){
+            int rem = n%10;
+            ans += (int)(rem*Math.pow(8,i++));
+            n/=10;
+        }
+        return ans;
     }
-
-
 
     static int binaryToDecimal(int n){
         int ans=0, i=0;
