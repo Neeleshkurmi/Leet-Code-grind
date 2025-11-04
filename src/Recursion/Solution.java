@@ -11,8 +11,19 @@ public class Solution {
 
         System.out.println(pow(2,3));
         System.out.println(isPrime(191,2));
+        System.out.println(max(new int[]{10,9,8},0));
     }
 
+    //[7,8,5,2,4]
+
+
+    //largest element in the array
+    static int max(int[] arr, int i){
+        if(i==arr.length-1) return arr[i];
+        if(i== arr.length-2) return arr[i];
+
+        return Math.max(max(arr,i+2),max(arr,i+1));
+    }
 
     //prime using recursion
     static boolean isPrime(int num,int i){
