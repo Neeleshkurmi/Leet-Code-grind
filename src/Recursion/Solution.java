@@ -2,6 +2,36 @@ package Recursion;
 
 public class Solution {
 
+    public static void main(String[] args) {
+//        printNumAsc(8);
+//        printNumDesc(8);
+//        int n=8;
+//        System.out.println((n*(n+1))/2 ==sumOfN(n));
+//        System.out.println(fibo(5));  // 0,1,1,2,3,5 expected output -- 5
+
+        System.out.println(pow(2,3));
+        System.out.println(isPrime(191,2));
+    }
+
+
+    //prime using recursion
+    static boolean isPrime(int num,int i){
+        if(num<2) return false;
+        else if(num%i==0) return false;
+        else if(i>=Math.sqrt(num)) return true;
+        return isPrime(num,i+1);
+    }
+
+
+    //num 2*f(2)
+    // num 2*f(2)
+     // num 2*f(2^1) --return 2
+
+    static int pow(int num,int pow){
+        if(pow==1) return num;
+        return num*pow(num,pow-1);
+    }
+
     public static void printNumAsc(int num){
         if(num==0){
             return;
@@ -9,6 +39,8 @@ public class Solution {
         printNumAsc(num-1);
         System.out.println(num);
     }
+
+
 
     public static void printNumDesc(int num){
         if(num==0){
@@ -31,13 +63,7 @@ public class Solution {
 
 
 
-    public static void main(String[] args) {
-//        printNumAsc(8);
-//        printNumDesc(8);
-        int n=8;
-        System.out.println((n*(n+1))/2 ==sumOfN(n));
-        System.out.println(fibo(5));  // 0,1,1,2,3,5 expected output -- 5
-    }
+
 
 
 
