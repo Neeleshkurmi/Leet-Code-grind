@@ -3,21 +3,37 @@ package basics;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(isArmStrong(153));
-        System.out.println(HCF(9,81));
-        System.out.println(LCM(9,81));
-        System.out.println(euclideanHCF(9,81));
+        System.out.println(binaryToDecimal(110101));
+        System.out.println(binaryToDecimal(100));
     }
 
+    static int ocatalToDecimal(int n){
+
+        return 0;
+    }
+
+
+
+    static int binaryToDecimal(int n){
+        int ans=0, i=0;
+        while (n>0){
+            if(n%10!=0){
+                ans += (int)(Math.pow(2,i));
+            }
+            i++;
+            n/=10;
+        }
+        return  ans;
+    }
 
     static int LCM(int a, int b){
         return a*b /HCF(a,b);
     }
 
     static int euclideanHCF(int a, int b){
-        if(a==0) return b;
-        return euclideanHCF(b%a,a);
+        return a==0? b: euclideanHCF(b%a,a);
     }
+
     static boolean isArmStrong(int num){
         int temp = num;
         int ans =0;
