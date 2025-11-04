@@ -4,8 +4,20 @@ public class Solution {
 
     public static void main(String[] args) {
         System.out.println(isArmStrong(153));
+        System.out.println(HCF(9,81));
+        System.out.println(LCM(9,81));
+        System.out.println(euclideanHCF(9,81));
     }
 
+
+    static int LCM(int a, int b){
+        return a*b /HCF(a,b);
+    }
+
+    static int euclideanHCF(int a, int b){
+        if(a==0) return b;
+        return euclideanHCF(b%a,a);
+    }
     static boolean isArmStrong(int num){
         int temp = num;
         int ans =0;
@@ -16,6 +28,15 @@ public class Solution {
             num /=10;
         }
         return  ans == temp;
+    }
+
+    static int HCF(int a, int b){
+        while(b!=0){
+            int temp = b;
+            b = b%a;
+            a = temp;
+        }
+        return a;
     }
 
     static int isArmStrong(int num, int numberOfDigits){
