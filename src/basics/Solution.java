@@ -3,9 +3,36 @@ package basics;
 public class Solution {
 
     public static void main(String[] args) {
-        primeNumbers(0,10);
+        System.out.println(isArmStrong(153));
     }
 
+    static boolean isArmStrong(int num){
+        int temp = num;
+        int ans =0;
+        int length = String.valueOf(num).length();
+        while(num>0){
+            int rem = num%10;
+            ans += (int) Math.pow(rem,length);
+            num /=10;
+        }
+        return  ans == temp;
+    }
+
+    static int isArmStrong(int num, int numberOfDigits){
+        if(num<=0) return 0;
+
+        return (int)(Math.pow(num%10,isArmStrong(num/10,numberOfDigits)));
+    }
+
+
+    static int sumOfDigits(int num){
+        int ans =0;
+        while (num>0){
+            ans += num %10;
+            num/=10;
+        }
+        return ans;
+    }
     static int max(int a, int b){
         return a>b ? a : b;
     }
@@ -13,6 +40,11 @@ public class Solution {
         if(a>b && a<c) return a;
         else if(b>a && b<c) return b;
         else return c;
+    }
+
+    static boolean isPalindrome(int num){
+        int reverse = reverseNum(num);
+        return num==reverse;
     }
 
     static void primeNumbers(int start, int end){
@@ -29,5 +61,13 @@ public class Solution {
         return true;
     }
 
-    static
+    static int reverseNum(int n){
+        int ans=0;
+        while(n>0){
+            int rem = n%10;
+            n /=10;
+            ans = ans * 10 + rem;
+        }
+        return ans;
+    }
 }
