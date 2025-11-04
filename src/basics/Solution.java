@@ -6,7 +6,22 @@ import java.util.Arrays;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(rootsOfEq(1,-5,6)));
+        System.out.println(replaceZeros(120014));
+    }
+
+    static int replaceZeros(int n){
+        int ans=0;
+        while(n>0){
+            int rem = n%10;
+            n /=10;
+            if(rem ==0){
+                ans = ans * 10 + 1;
+            }
+            else {
+                ans = ans * 10 + rem;
+            }
+        }
+        return reverseNum(ans);
     }
 
 
