@@ -18,8 +18,21 @@ public class Solution {
         int[] arr = {1,2,3,4};
         reverse(arr,3,0);
         System.out.println(Arrays.toString(arr));
+        String s = "abccba";
+        System.out.println(isPalindrome(s));
     }
 
+
+    static boolean isPalindrome(String s){
+        String temp = reverse(s,0);
+        return s.equals(temp);
+    }
+
+    static String reverse(String s, int i){
+        if(i==s.length()-1) return String.valueOf(s.charAt(i));
+        String ch = reverse(s,i+1);
+        return ch+s.charAt(i);
+    }
 
 
     static void reverse(int[] arr, int i,int j){
