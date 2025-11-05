@@ -1,5 +1,7 @@
 package Recursion;
 
+import java.util.Arrays;
+
 public class Solution {
 
     public static void main(String[] args) {
@@ -9,20 +11,42 @@ public class Solution {
 //        System.out.println((n*(n+1))/2 ==sumOfN(n));
 //        System.out.println(fibo(5));  // 0,1,1,2,3,5 expected output -- 5
 
-        System.out.println(pow(2,3));
-        System.out.println(isPrime(191,2));
-        System.out.println(max(new int[]{10,9,8},0));
+//        System.out.println(pow(2,3));
+//        System.out.println(isPrime(191,2));
+        System.out.println(min(new int[]{6,7,4,3,-1},0));
+
+        int[] arr = {1,2,3,4};
+        reverse(arr,3,0);
+        System.out.println(Arrays.toString(arr));
     }
 
-    //[7,8,5,2,4]
 
+
+    static void reverse(int[] arr, int i,int j){
+        if(j>=i) return;
+        swap(arr,i,j);
+        reverse(arr,i-1,j+1);
+    }
+
+    static void swap(int[] arr,int i,int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    static int min(int[] arr, int i){
+        if(i== arr.length-1) return arr[i];
+        int min = min(arr,i+1);
+        return Math.min(min,arr[i]);
+    }
 
     //largest element in the array
+    //[7,8,5,2,4]
+
     static int max(int[] arr, int i){
         if(i==arr.length-1) return arr[i];
-        if(i== arr.length-2) return arr[i];
-
-        return Math.max(max(arr,i+2),max(arr,i+1));
+        int max = max(arr,i+1);
+        return Math.max(max,arr[i]);
     }
 
     //prime using recursion
