@@ -20,12 +20,18 @@ public class Solution {
         System.out.println(Arrays.toString(arr));
         String s = "abccba";
         System.out.println(isPalindrome(s));
+        System.out.println(isPalindrome(121));
     }
 
 
     static boolean isPalindrome(String s){
         String temp = reverse(s,0);
         return s.equals(temp);
+    }
+
+    static boolean isPalindrome(int a){
+        String s = reverse(String.valueOf(a),0);
+        return s.equals(String.valueOf(a));
     }
 
     static String reverse(String s, int i){
