@@ -13,14 +13,22 @@ public class Solution {
 
 //        System.out.println(pow(2,3));
 //        System.out.println(isPrime(191,2));
-        System.out.println(min(new int[]{6,7,4,3,-1},0));
+//        System.out.println(min(new int[]{6,7,4,3,-1},0));
+//
+//        int[] arr = {1,2,3,4};
+//        reverse(arr,3,0);
+//        System.out.println(Arrays.toString(arr));
+//        String s = "abccba";
+//        System.out.println(isPalindrome(s));
+//        System.out.println(isPalindrome(121));
+        System.out.println(isPalindrome("ababababa"));
+        System.out.println(fibo(8));
+    }
 
-        int[] arr = {1,2,3,4};
-        reverse(arr,3,0);
-        System.out.println(Arrays.toString(arr));
-        String s = "abccba";
-        System.out.println(isPalindrome(s));
-        System.out.println(isPalindrome(121));
+    static boolean isPalindrome(String s, int i){
+        if(i>=s.length()/2) return false;
+        if(s.charAt(i) !=s.charAt(s.length()-i-1)) return false;
+        return isPalindrome(s,i+1);
     }
 
 
@@ -105,8 +113,7 @@ public class Solution {
     }
 
     public static int fibo(int num){
-        if(num==1 || num==0) return num==0 ?0:1;
-
+        if(num<=1) return num;
         return fibo(num-1) + fibo(num-2);
     }
 
