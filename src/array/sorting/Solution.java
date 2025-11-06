@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 public class Solution {
     public static void main(String[] args) {
-    int[] arr = {4,6,-2,-3};
-    selectionSort(arr);
-    System.out.println(Arrays.toString(arr));
-}
+        int[] arr = {4,6,-2,-3};
+        selectionSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
 
     static void selectionSort(int[] arr){
         //4,6,2,3
