@@ -25,6 +25,7 @@ public class Solution {
         System.out.println(fibo(8));
     }
 
+
     static boolean isPalindrome(String s, int i){
         if(i>=s.length()/2) return false;
         if(s.charAt(i) !=s.charAt(s.length()-i-1)) return false;
