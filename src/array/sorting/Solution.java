@@ -6,12 +6,42 @@ import java.util.List;
 
 public class Solution {
     public static void main(String[] args) {
-//        int[] arr = {4,6,-2,-3};
-//        mergeSort(arr);
-//        System.out.println(Arrays.toString(arr));
-        int[] arr = {1, 2, 2, 1, 3};
-        List<List<Integer>> map = freq(arr);
-        System.out.println(map);
+        int[] arr = {4, 2, 6, 7, 5, 9};
+        sort(arr);
+        System.out.println(Arrays.toString(arr));
+//        int[] arr = {1, 2, 2, 1, 3};
+//        List<List<Integer>> map = freq(arr);
+//        System.out.println(map);
+    }
+
+    static void sort(int[] arr){
+        quickSort(arr, 0, arr.length-1);
+    }
+
+    static void quickSort(int[] arr, int low, int high){
+        if(low<high){
+            int partionIndex = partion(arr, low, high);
+            quickSort(arr, low, partionIndex-1);
+            quickSort(arr, partionIndex+1, high);
+        }
+    }
+
+    static int partion(int[] arr, int low, int high){
+        int pivot = arr[low], i=low, j= high;
+
+        while(i<j){
+            while(arr[i] <= pivot && i<=high){
+                i++;
+            }
+            while(arr[j] > pivot && j>=low){
+                j--;
+            }
+            if(i<j) {
+                swap(arr, i, j);
+            }
+        }
+        swap(arr, low, j);
+        return j;
     }
 
     public static void mergeSort(int[] arr){
@@ -88,9 +118,9 @@ public class Solution {
         }
     }
 
-    static void insertionSort(int[] arr){
-
-    }
+//    static void insertionSort(int[] arr){
+//
+//    }
 
 
     static void swap(int[] arr, int i, int j){
