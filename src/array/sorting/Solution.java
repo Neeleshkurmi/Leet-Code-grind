@@ -4,8 +4,9 @@ import java.util.*;
 
 public class Solution {
     public static void main(String[] args) {
-        int[] arr = {-1,1,1};
-        System.out.println(freq(arr));
+        int[] arr = {2,0,2,1,1,0};
+        sort(arr);
+        System.out.println(Arrays.toString(arr));
 
     }
 
