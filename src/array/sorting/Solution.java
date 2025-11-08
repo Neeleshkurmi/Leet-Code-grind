@@ -1,21 +1,34 @@
 package array.sorting;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Solution {
     public static void main(String[] args) {
-        int[] arr = {4, 2, 6, 7, 5, 9};
-        sort(arr);
-        System.out.println(Arrays.toString(arr));
-//        int[] arr = {1, 2, 2, 1, 3};
-//        List<List<Integer>> map = freq(arr);
-//        System.out.println(map);
+        int[] arr = {-1,1,1};
+        System.out.println(freq(arr));
+
     }
 
     static void sort(int[] arr){
         quickSort(arr, 0, arr.length-1);
+    }
+
+    static List<List<Integer>> freq(int[] arr){
+        List<List<Integer>> list = new ArrayList<>();
+
+        for(int num : arr){
+            boolean found = false;
+            for(List<Integer> temp : list){
+                if(temp.get(0)==num){
+                    found = true;
+                    temp.set(1, temp.get(1)+1);
+                }
+            }
+            if(!found) {
+                list.add(Arrays.asList(num,1));
+            }
+        }
+        return list;
     }
 
     static void quickSort(int[] arr, int low, int high){
@@ -24,6 +37,22 @@ public class Solution {
             quickSort(arr, low, partionIndex-1);
             quickSort(arr, partionIndex+1, high);
         }
+    }
+
+    public static int longestSubarray(int[] arr, int k) {
+        Map<Integer,Integer> map = new HashMap<>();
+        int max = 0;
+        int sum =0;
+
+        for(int i=0; i<arr.length; i++){
+            sum +=arr[i];
+            if(map.containsKey(sum-k)){
+                max = Math.max(max, map.get(sum-k) +i);
+            }
+
+            map.put(sum,i);
+        }
+        return max;
     }
 
     static int partion(int[] arr, int low, int high){
@@ -59,7 +88,7 @@ public class Solution {
         merge(arr, low, mid, high);
     }
 
-    static List<List<Integer>> freq(int[] arr){
+    static List<List<Integer>> freqe(int[] arr){
         List<List<Integer>> list = new ArrayList<>();
 
         for(int i=0; i<arr.length; i++){
