@@ -3,12 +3,50 @@ package array.sorting;
 import java.util.*;
 
 public class Solution {
-    public static void main(String[] args) {
-        int[] arr = {2,0,2,1,1,0};
-        sort(arr);
-        System.out.println(Arrays.toString(arr));
-
+    public static void main(String[] args){
+        int[] nums1 = {1,2,3,0,0,0};
+        int[] nums2 = {2,5,6};
+        merge(nums1,3,nums2,3);
+        System.out.println(Arrays.toString(nums1));
     }
+
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = m - 1;         // pointer for nums1
+        int j = n - 1;         // pointer for nums2
+        int k = m + n - 1;     // pointer for merged array (end)
+
+        while (i >= 0 && j >= 0) {
+            if (nums1[i] > nums2[j]) {
+                nums1[k--] = nums1[i--];
+            } else {
+                nums1[k--] = nums2[j--];
+            }
+        }
+
+        // Copy remaining elements from nums2
+        while (j >= 0) {
+            nums1[k--] = nums2[j--];
+        }
+    }
+
+
+    public static void shift(int[] arr, int low, int high){
+        for(int i=high-1; i>low; i--){
+            arr[i] = arr[i-1];
+        }
+    }
+
+
+
+//    public static int longestConsecutive(int[] nums) {
+//        Arrays.sort(nums);
+//        int i=1, count=0;
+//        while(){
+//            count++;
+//            i++;
+//        }
+//        return count;
+//    }
 
     static void sort(int[] arr){
         quickSort(arr, 0, arr.length-1);
