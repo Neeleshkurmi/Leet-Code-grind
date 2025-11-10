@@ -1,12 +1,32 @@
 package array.slidingwindow;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class Solution {
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(firstNegativeInWindowSizeK(new int[]{12,-1,-7,8,-15,30,16,28},3)));
+        System.out.println((prefixSum(new int[]{-1,1,1},1)));
+    }
+
+    static int prefixSum(int[] nums,int k){
+        int maxL = Integer.MIN_VALUE;
+        int sum = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for(int i=0; i<nums.length; i++){
+            sum+=nums[i];
+
+            if(sum==k){
+                maxL= Math.max(sum,maxL);
+            }
+            int rem = nums[i] -k;
+            if(map.containsKey(rem)){
+                maxL =Math.max(i-map.get(rem),maxL);
+            }
+            if (!map.containsKey(sum)) {
+                map.put(sum, i);
+            }
+        }
+        return maxL;
     }
 
     static int[] firstNegativeInWindowSizeK(int[] nums, int k){
