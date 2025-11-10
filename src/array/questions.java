@@ -4,9 +4,52 @@ import java.util.*;
 
 public class questions {
     public static void main(String[] args) {
-        System.out.println(minimumDistance(new int[] {4,4,4,4,4}));
-        System.out.println(minMaxDifference(90));
-        System.out.println(Arrays.toString(divideString("ctoyjrwtngqwt",8,'n')));
+//        System.out.println(minimumDistance(new int[] {4,4,4,4,4}));
+//        System.out.println(minMaxDifference(90));
+//        System.out.println(Arrays.toString(divideString("ctoyjrwtngqwt",8,'n')));
+
+//        int[] nums = new int[]{1,2,3,4,5,6,7};
+//        rotate(nums,3);
+//        System.out.println(Arrays.toString(nums));
+        System.out.println(romanToInteger("CM"));
+    }
+
+    static int romanToInteger(String s){
+        Map<Character,Integer> map = new HashMap<>();
+        map.put('I',1); map.put('v',5); map.put('X',10);
+        map.put('L',50); map.put('M',1000); map.put('C',100); map.put('D',500);
+
+        int ans = map.get(s.charAt(s.length()-1));
+        for(int i=s.length()-2; i>=0; i--){
+            if(map.get(s.charAt(i))<map.get(s.charAt(i+1))){
+                ans-=map.get(s.charAt(i));
+            }
+            else{
+                ans+=map.get(s.charAt(i));
+            }
+        }
+        return ans;
+    }
+
+    static void rotate(int[] nums, int k){
+        k= k%nums.length;
+
+        reverse(nums,0,nums.length-1);
+        reverse(nums,0, k-1);
+        reverse(nums, k, nums.length-1);
+
+    }
+
+    static void reverse(int [] nums, int start, int end){
+        while(start<end){
+            swap(nums, start, end);
+            start++; end--;
+        }
+    }
+    static void swap(int[] nums, int a, int b){
+        int temp = nums[a];
+        nums[a] = nums[b];
+        nums[b] = temp;
     }
 
     public static String[] divideString(String s, int k, char fill) {
