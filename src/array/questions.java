@@ -8,11 +8,44 @@ public class questions {
 //        System.out.println(minMaxDifference(90));
 //        System.out.println(Arrays.toString(divideString("ctoyjrwtngqwt",8,'n')));
 
-//        int[] nums = new int[]{1,2,3,4,5,6,7};
+        int[] nums = new int[] {2 , 1 , 5 , 4 ,3};
 //        rotate(nums,3);
 //        System.out.println(Arrays.toString(nums));
-        System.out.println(romanToInteger("CM"));
+//        System.out.println(romanToInteger("CM"));
+
+        nextPermutation(nums);
+        System.out.println(Arrays.toString(nums));
     }
+
+
+    public static void nextPermutation(int[] nums) {
+        int index =-1;
+
+        for(int i=nums.length-2; i>=0; i--){
+            if(nums[i]<nums[i+1]){
+                index = i;
+                break;
+            }
+        }
+        if(index ==-1){
+            reverse(nums, 0, nums.length-1);
+            return;
+        }
+        int min =-1;
+        for(int i=nums.length-1; i>index; i--){
+            if(nums[i]>nums[index]){
+                min = i;
+                break;
+            }
+        }
+        swap(nums, index, min);
+        Arrays.sort(nums, index+1, nums.length);
+    }
+
+
+
+
+
 
     static int romanToInteger(String s){
         Map<Character,Integer> map = new HashMap<>();
@@ -41,7 +74,7 @@ public class questions {
     }
 
     static void reverse(int [] nums, int start, int end){
-        while(start<end){
+        while(start<=end){
             swap(nums, start, end);
             start++; end--;
         }
