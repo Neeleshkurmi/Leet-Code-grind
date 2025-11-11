@@ -1,21 +1,56 @@
 package array;
 
+import string.Solution;
+
 import java.util.*;
 
 public class questions {
     public static void main(String[] args) {
-//        System.out.println(minimumDistance(new int[] {4,4,4,4,4}));
-//        System.out.println(minMaxDifference(90));
-//        System.out.println(Arrays.toString(divideString("ctoyjrwtngqwt",8,'n')));
 
-        int[] nums = new int[] {2 , 1 , 5 , 4 ,3};
-//        rotate(nums,3);
+//        int[] nums = new int[] {2 , 1 , 5 , 4 ,3};
+//        nextPermutation(nums);
 //        System.out.println(Arrays.toString(nums));
-//        System.out.println(romanToInteger("CM"));
-
-        nextPermutation(nums);
-        System.out.println(Arrays.toString(nums));
+        System.out.println(spiralOrder(new int[][]{{1,2,3},{4,5,6},{7,8,9}},3,3));
     }
+
+    public static List<Integer> spiralOrder(int[][] matrix, int m, int n) {
+        List<Integer> result = new ArrayList<>();
+        if (matrix == null || matrix.length == 0) {
+            return result;
+        }
+
+        int rows = matrix.length, cols = matrix[0].length;
+        int left = 0, right = cols-1, top = 0, bottom = rows-1;
+
+        while (left <= right && top <= bottom) {
+            for (int i = left; i <= right; i++) {
+                result.add(matrix[top][i]);
+            }
+            top++;
+
+            for (int i = top; i <= bottom; i++) {
+                result.add(matrix[i][right]);
+            }
+            right--;
+
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--) {
+                    result.add(matrix[bottom][i]);
+                }
+                bottom--;
+            }
+
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    result.add(matrix[i][left]);
+                }
+                left++;
+            }
+        }
+
+        return result;
+    }
+
 
     public int maxSubArray(int[] nums) {
         int max = Integer.MIN_VALUE;
