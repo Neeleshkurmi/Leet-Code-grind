@@ -4,7 +4,32 @@ import java.util.*;
 
 public class questions {
     public static void main(String[] args) {
-        System.out.println(pascals(5));
+        System.out.println(maxLength(new int[]{2, 10, 4}));
+        System.out.println(maxLength(new int[] {1, 0, -4, 3, 1, 0}));
+        System.out.println(maxLength(new int[] {15, -2, 2, -8, 1, 7, 10, 23}));
+        System.out.println(maxLength(new int[] {41,-45 ,-44 ,-24 ,20, 10 ,44}));
+        System.out.println(maxLength(new int[] {-31 ,-48, -90 ,54 ,20 ,95, 6 ,-86, 22
+        }));
+    }
+
+    static int maxLength(int arr[]) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int maxL = 0;
+        int sum =0;
+
+        for(int i=0; i<arr.length; i++){
+            sum+=arr[i];
+            if(sum==0){
+                maxL = Math.max(maxL,i+1);
+            }
+            if(map.containsKey(sum)){
+                maxL = Math.max(maxL, i-map.get(sum));
+            }
+            else{
+                map.put(sum, i);
+            }
+        }
+        return maxL;
     }
     public static List<List<Integer>> pascals(int numRows){
         List<List<Integer>> result = new ArrayList<>();
