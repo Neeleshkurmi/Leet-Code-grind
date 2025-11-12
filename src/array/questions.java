@@ -4,15 +4,28 @@ import java.util.*;
 
 public class questions {
     public static void main(String[] args) {
-        System.out.println(maxLength(new int[]{2, 10, 4}));
-        System.out.println(maxLength(new int[] {1, 0, -4, 3, 1, 0}));
-        System.out.println(maxLength(new int[] {15, -2, 2, -8, 1, 7, 10, 23}));
-        System.out.println(maxLength(new int[] {41,-45 ,-44 ,-24 ,20, 10 ,44}));
-        System.out.println(maxLength(new int[] {-31 ,-48, -90 ,54 ,20 ,95, 6 ,-86, 22
-        }));
+        System.out.println(maxLenXor(new int[] {4, 2, 2, 6, 4},6));
+        System.out.println(maxLenXor(new int[] {5, 6, 7, 8, 9},5));
+        System.out.println(maxLenXor(new int[] {1,1,1,1},0));
     }
 
-    static int maxLength(int arr[]) {
+    static int maxLenXor(int[] arr, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int count =0;
+        int xor =0;
+
+        for (int j : arr) {
+            xor ^= j;
+            if (xor == k) {
+                count++;
+            }
+            count+=map.getOrDefault(xor^k,0);
+
+            map.put(xor, map.getOrDefault(xor , 0) + 1);
+        }
+        return count;
+    }
+    static int maxLength(int[] arr) {
         Map<Integer, Integer> map = new HashMap<>();
         int maxL = 0;
         int sum =0;
