@@ -1,18 +1,36 @@
 package array;
 
-import string.Solution;
-
 import java.util.*;
 
 public class questions {
     public static void main(String[] args) {
-
-//        int[] nums = new int[] {2 , 1 , 5 , 4 ,3};
-//        nextPermutation(nums);
-//        System.out.println(Arrays.toString(nums));
-        System.out.println(spiralOrder(new int[][]{{1,2,3},{4,5,6},{7,8,9}},3,3));
+        System.out.println(pascals(5));
     }
-
+    public static List<List<Integer>> pascals(int numRows){
+        List<List<Integer>> result = new ArrayList<>();
+        result.add(Arrays.asList(1));
+        if(numRows==1){
+            return result;
+        }
+        result.add(Arrays.asList(1,1));
+        if(numRows==2){
+            return result;
+        }
+        numRows=numRows-2;
+        int j=1;
+        while(numRows>0){
+            List<Integer> current = new ArrayList<>();
+            current.add(1);
+            for(int i=1; i<result.size(); i++){
+                current.add(result.get(j).get(i-1) + result.get(j).get(i));
+            }
+            current.add(1);
+            j++;
+            result.add(current);
+            numRows--;
+        }
+        return result;
+    }
     public static List<Integer> spiralOrder(int[][] matrix, int m, int n) {
         List<Integer> result = new ArrayList<>();
         if (matrix == null || matrix.length == 0) {
@@ -50,8 +68,6 @@ public class questions {
 
         return result;
     }
-
-
     public int maxSubArray(int[] nums) {
         int max = Integer.MIN_VALUE;
         int sum =0;
@@ -68,8 +84,6 @@ public class questions {
         }
         return max;
     }
-
-
     public static void nextPermutation(int[] nums) {
         int index =-1;
 
@@ -93,12 +107,6 @@ public class questions {
         swap(nums, index, min);
         Arrays.sort(nums, index+1, nums.length);
     }
-
-
-
-
-
-
     static int romanToInteger(String s){
         Map<Character,Integer> map = new HashMap<>();
         map.put('I',1); map.put('v',5); map.put('X',10);
@@ -115,7 +123,6 @@ public class questions {
         }
         return ans;
     }
-
     static void rotate(int[] nums, int k){
         k= k%nums.length;
 
@@ -124,7 +131,6 @@ public class questions {
         reverse(nums, k, nums.length-1);
 
     }
-
     static void reverse(int [] nums, int start, int end){
         while(start<=end){
             swap(nums, start, end);
@@ -136,7 +142,6 @@ public class questions {
         nums[a] = nums[b];
         nums[b] = temp;
     }
-
     public static String[] divideString(String s, int k, char fill) {
         int temp =k;
         int size = (s.length()/k) + (s.length()%k);
@@ -165,8 +170,6 @@ public class questions {
         }
         return ans;
     }
-
-
     public static int minMaxDifference(int num) {
         int max = Integer.MIN_VALUE;
         int min = Integer.MAX_VALUE;
@@ -185,7 +188,6 @@ public class questions {
         }
         return max - min;
     }
-
     //leet code contest question
     public static int minimumDistance(int[] nums){
         Map<Integer, List<Integer>> map = new HashMap<>();

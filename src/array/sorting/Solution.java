@@ -113,7 +113,8 @@ public class Solution {
     }
 
     public static void mergeSort(int[] arr){
-        int low = 0, high = arr.length-1;
+        int low = 0;
+        int high = arr.length-1;
         mergeS(arr,low,high);
     }
 
@@ -151,6 +152,7 @@ public class Solution {
     public static void merge(int [] arr, int low, int mid, int high){
         ArrayList<Integer> temp = new ArrayList<>();
         int left = low, right = mid+1;
+
         while(left<=mid && right<=high){
             if(arr[left]<arr[right]){
                 temp.add(arr[left]);
