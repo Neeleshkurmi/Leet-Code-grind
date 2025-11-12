@@ -4,11 +4,28 @@ import java.util.*;
 
 public class questions {
     public static void main(String[] args) {
-        System.out.println(maxLenXor(new int[] {4, 2, 2, 6, 4},6));
-        System.out.println(maxLenXor(new int[] {5, 6, 7, 8, 9},5));
-        System.out.println(maxLenXor(new int[] {1,1,1,1},0));
+//        System.out.println(maxLenXor(new int[] {4, 2, 2, 6, 4},6));
+//        System.out.println(maxLenXor(new int[] {5, 6, 7, 8, 9},5));
+//        System.out.println(maxLenXor(new int[] {1,1,1,1},0));
+        System.out.println("expected output: "+5*(5+1)/2+" your output : "+subArraysSum(new int[] {0,0,0,0,0},0));
     }
 
+    static int subArraysSum(int[] arr, int k) {
+        Map<Integer, Integer> map = new HashMap<>();
+        int count =0;
+        int sum =0;
+
+        for (int j : arr) {
+            sum += j;
+            if (sum == k) {
+                count++;
+            }
+            count+=map.getOrDefault(sum-k,0);
+
+            map.put(sum, map.getOrDefault(sum , 0) + 1);
+        }
+        return count;
+    }
     static int maxLenXor(int[] arr, int k) {
         Map<Integer, Integer> map = new HashMap<>();
         int count =0;
