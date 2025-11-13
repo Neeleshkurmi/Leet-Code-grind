@@ -10,6 +10,24 @@ public class questions {
         System.out.println("expected output: "+5*(5+1)/2+" your output : "+subArraysSum(new int[] {0,0,0,0,0},0));
     }
 
+//problem 1 nov 13
+    static int operation(String s){
+        int count =0;
+        int temp =0;
+        for(int i=0; i<s.length(); i++){
+            if(s.charAt(i)=='1'){
+                temp++;
+            }
+	        /*👉 When you hit a '0' right after one or more '1's
+              you cash out the apples → count += temp
+              👉 If you hit '0' after another '0'
+              do nothing (because there were no recent `'1's).*/
+
+            else if (s.charAt(i - 1) == '1')
+                count += temp;
+        }
+        return count;
+    }
     static int subArraysSum(int[] arr, int k) {
         Map<Integer, Integer> map = new HashMap<>();
         int count =0;
