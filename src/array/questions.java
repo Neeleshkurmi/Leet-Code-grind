@@ -23,7 +23,7 @@ public class questions {
               👉 If you hit '0' after another '0'
               do nothing (because there were no recent `'1's).*/
 
-            else if (s.charAt(i - 1) == '1')
+            else if (i> 0 && s.charAt(i - 1) == '1')
                 count += temp;
         }
         return count;
