@@ -4,13 +4,53 @@ import java.util.*;
 
 public class questions {
     public static void main(String[] args) {
-//        System.out.println(maxLenXor(new int[] {4, 2, 2, 6, 4},6));
-//        System.out.println(maxLenXor(new int[] {5, 6, 7, 8, 9},5));
-//        System.out.println(maxLenXor(new int[] {1,1,1,1},0));
-        System.out.println("expected output: "+5*(5+1)/2+" your output : "+subArraysSum(new int[] {0,0,0,0,0},0));
-    }
+        int[][] mat = new int[][]{{0,1,2,0},{3,4,5,2},{7,3,1,6}};
+        setZeroes(mat);
+        System.out.println(Arrays.deepToString(mat));
 
-//problem 1 nov 13
+    }
+    public static void setZeroes(int[][] matrix) {
+        int n = matrix.length;
+        int m = matrix[0].length;
+        boolean[] row = new boolean[m];
+        boolean[] col = new boolean[n];
+
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                if(matrix[i][j]==0){
+                    row[j] = true;
+                    col[i] = true;
+                }
+            }
+        }
+
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                if(col[i] || row[j]){
+                    matrix[i][j] = 0;
+                }
+
+            }
+        }
+
+    }
+    public static int[][] inc(int m, int[][]q){
+        int[][] mat = new int[m][m];
+        for (int[] query : q) {
+            int r1 = query[0];
+            int c1 = query[1];
+            int r2 = query[2];
+            int c2 = query[3];
+
+            for (int r = r1; r <= r2; r++) {
+                for (int c = c1; c <= c2; c++) {
+                    mat[r][c]++;
+                }
+            }
+        }
+        return mat;
+    }
+    //problem 1 nov 13
     static int operation(String s){
         int count =0;
         int temp =0;
