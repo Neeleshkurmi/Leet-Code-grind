@@ -4,11 +4,32 @@ import java.util.*;
 
 public class questions {
     public static void main(String[] args) {
-        int[][] mat = new int[][]{{0,1,2,0},{3,4,5,2},{7,3,1,6}};
-        setZeroes(mat);
+        int[][] mat = new int[][]{{1,2,3},{4,5,6},{7,8,9}};
+        System.out.println(Arrays.deepToString(mat));
+        rotate(mat);
         System.out.println(Arrays.deepToString(mat));
 
     }
+
+    static void rotate(int[][] mat){
+        int n= mat.length;
+        for(int i=0; i<n; i++){
+            for (int j =i+1; j <n; j++) {
+                swap(mat,i,j);
+            }
+        }
+        System.out.println(Arrays.deepToString(mat));
+        for(int[] num : mat){
+                reverse(num,0,n-1);
+        }
+    }
+
+    public static void swap(int[][] arr, int i, int j){
+        int temp = arr[i][j];
+        arr[i][j] = arr[j][i];
+        arr[j][i] = temp;
+    }
+
     public static void setZeroes(int[][] matrix) {
         int n = matrix.length;
         int m = matrix[0].length;
