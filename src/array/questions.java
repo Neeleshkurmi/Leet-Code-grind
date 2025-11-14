@@ -14,20 +14,42 @@ public class questions {
 //                { 13, 14, 15, 16 } }));
 //        System.out.println(spiralOrder(new int[][]{{1,2,3}}));
 
-        System.out.println(Arrays.toString(productExceptSelf(new int[]{-1,1,0,-3,3})));
+        System.out.println(Arrays.toString(productExceptSelf(new int[]{1,2,3,4})));
     }
 
     //nov 14
     public static int[] productExceptSelf(int[] nums) {
+
+        //this is optimal approach
         int[] ans = new int[nums.length];
-        for (int i = 0; i < nums.length; i++) {
-            int pd =1;
-            for (int j = 0; j <nums.length; j++) {
-                if(j==i);
-                else pd*=nums[j];
-            }
-            ans[i] = pd;
+        Map<Integer, Integer> map = new HashMap<>();
+        int n = nums.length;
+        int prefix =nums[0], suffix =nums[n-1];
+        map.put(0,prefix);
+        map.put(n-1, suffix);
+        int i=1, j=n-2;
+
+        while(i<=j){
+            prefix*=nums[i];
+            suffix*=nums[j];
+            map.put(i,prefix);
+            map.put(j,suffix);
+            i++; j--;
         }
+        for (int k = 0; k <n; k++) {
+            if (k == 0) {
+                int mid = (n-1)/2;
+                ans[k] = (map.get(mid)/nums[k])*map.get(mid+1);
+            }
+            else if(k==n-1){
+                int mid = (n-1)/2;
+                ans[k] = map.get(mid) * (map.get(mid+1)/nums[k]);
+            }
+            else{
+                ans[k] = map.get(k-1) * map.get(k+1);
+            }
+        }
+
         return ans;
     }
     static List<Integer> spiralOrder(int[][] nums){
