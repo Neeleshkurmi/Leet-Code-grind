@@ -15,7 +15,7 @@ public class questions {
         System.out.println(spiralOrder(new int[][]{{1,2,3}}));
     }
 
-
+    //nov 14
     static List<Integer> spiralOrder(int[][] nums){
         List<Integer> result = new ArrayList<>();
         int m =nums.length;
@@ -50,7 +50,6 @@ public class questions {
         }
         return result;
     }
-    //nov 14
     static void rotate(int[][] mat){
         int n= mat.length;
         for(int i=0; i<n; i++){
