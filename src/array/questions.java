@@ -4,13 +4,53 @@ import java.util.*;
 
 public class questions {
     public static void main(String[] args) {
-        int[][] mat = new int[][]{{1,2,3},{4,5,6},{7,8,9}};
-        System.out.println(Arrays.deepToString(mat));
-        rotate(mat);
-        System.out.println(Arrays.deepToString(mat));
-
+//        int[][] mat = new int[][]{{1,2,3},{4,5,6},{7,8,9}};
+//        System.out.println(Arrays.deepToString(mat));
+//        rotate(mat);
+//        System.out.println(Arrays.deepToString(mat));
+        System.out.println(spiralOrder(new int[][]{ { 1, 2, 3, 4 },
+                { 5, 6, 7, 8 },
+                { 9, 10, 11, 12 },
+                { 13, 14, 15, 16 } }));
+        System.out.println(spiralOrder(new int[][]{{1,2,3}}));
     }
 
+
+    static List<Integer> spiralOrder(int[][] nums){
+        List<Integer> result = new ArrayList<>();
+        int m =nums.length;
+        int n = nums[0].length;
+        int top =0, left =0, right = n-1, bottom = m-1;
+
+        while(left<=right && top<=bottom){
+
+            for(int i=left; i<=right; i++){
+                result.add(nums[top][i]);
+            }
+            top++;
+
+            for(int i=top; i<=bottom; i++){
+                result.add(nums[i][right]);
+            }
+            right--;
+
+            if(top<=bottom){
+                for (int i =right; i >=left ; i--) {
+                    result.add(nums[bottom][i]);
+                }
+                bottom--;
+            }
+
+            if(left<=right){
+                for (int i = bottom; i >=top ; i--) {
+                    result.add(nums[i][left]);
+                }
+                left++;
+            }
+        }
+        return result;
+    }
+    //nov 14
     static void rotate(int[][] mat){
         int n= mat.length;
         for(int i=0; i<n; i++){
@@ -23,13 +63,11 @@ public class questions {
                 reverse(num,0,n-1);
         }
     }
-
     public static void swap(int[][] arr, int i, int j){
         int temp = arr[i][j];
         arr[i][j] = arr[j][i];
         arr[j][i] = temp;
     }
-
     public static void setZeroes(int[][] matrix) {
         int n = matrix.length;
         int m = matrix[0].length;
@@ -71,7 +109,7 @@ public class questions {
         }
         return mat;
     }
-    //problem 1 nov 13
+    //problem solved nov 13
     static int operation(String s){
         int count =0;
         int temp =0;
@@ -89,6 +127,7 @@ public class questions {
         }
         return count;
     }
+
     static int subArraysSum(int[] arr, int k) {
         Map<Integer, Integer> map = new HashMap<>();
         int count =0;
