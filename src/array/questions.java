@@ -8,14 +8,28 @@ public class questions {
 //        System.out.println(Arrays.deepToString(mat));
 //        rotate(mat);
 //        System.out.println(Arrays.deepToString(mat));
-        System.out.println(spiralOrder(new int[][]{ { 1, 2, 3, 4 },
-                { 5, 6, 7, 8 },
-                { 9, 10, 11, 12 },
-                { 13, 14, 15, 16 } }));
-        System.out.println(spiralOrder(new int[][]{{1,2,3}}));
+//        System.out.println(spiralOrder(new int[][]{ { 1, 2, 3, 4 },
+//                { 5, 6, 7, 8 },
+//                { 9, 10, 11, 12 },
+//                { 13, 14, 15, 16 } }));
+//        System.out.println(spiralOrder(new int[][]{{1,2,3}}));
+
+        System.out.println(Arrays.toString(productExceptSelf(new int[]{-1,1,0,-3,3})));
     }
 
     //nov 14
+    public static int[] productExceptSelf(int[] nums) {
+        int[] ans = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            int pd =1;
+            for (int j = 0; j <nums.length; j++) {
+                if(j==i);
+                else pd*=nums[j];
+            }
+            ans[i] = pd;
+        }
+        return ans;
+    }
     static List<Integer> spiralOrder(int[][] nums){
         List<Integer> result = new ArrayList<>();
         int m =nums.length;
