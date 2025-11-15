@@ -15,9 +15,36 @@ public class questions {
 //        System.out.println(spiralOrder(new int[][]{{1,2,3}}));
 
         System.out.println(Arrays.toString(productExceptSelf(new int[]{-1,1,0,-3,3})));
+        System.out.println(maxProduct(new int[]{-2,0,-1}));
     }
 
 
+    //nov 15
+    public static int maxProduct(int[] nums) {
+        int maxProd = nums[0];
+        int minProd = nums[0];
+        int globalMax = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            int cur = nums[i];
+
+            // When current number is negative, swap max and min
+            if (cur < 0) {
+                int temp = maxProd;
+                maxProd = minProd;
+                minProd = temp;
+            }
+
+            // Calculate new max and min
+            maxProd = Math.max(cur, maxProd * cur);
+            minProd = Math.min(cur, minProd * cur);
+
+            // Update global max
+            globalMax = Math.max(globalMax, maxProd);
+        }
+
+        return globalMax;
+    }
     //nov 14
     public static int[] productExceptSelf(int[] nums) {
         int n = nums.length;
