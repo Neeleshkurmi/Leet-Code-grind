@@ -24,17 +24,17 @@ public class questions {
     static int countSubStrings(String s){
         int ans =0;
         int count =0;
-        for(int i=0; i<s.length(); i++){
-            while (i<s.length() && s.charAt(i)=='1'){
+        for(char ch : s.toCharArray()){
+            if(ch=='1'){
                 count++;
-                i++;
             }
-            if(count!=0){
-                ans+= (count*(count+1))/2;
+            else{
+                ans+=count* (count+1) /2;
+                count=0;
             }
-            count=0;
         }
-        return ans;
+        ans+= count*(count+1) /2;
+        return (int)(ans % Math.pow(10,7));
     }
     //nov 15
     public static int maxProduct(int[] nums) {
