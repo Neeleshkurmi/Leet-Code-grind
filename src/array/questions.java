@@ -17,10 +17,27 @@ public class questions {
         System.out.println(Arrays.toString(productExceptSelf(new int[]{-1,1,0,-3,3})));
         System.out.println(maxProduct(new int[]{-2,0,-1}));
         System.out.println(countSubStrings("0110111"));
+        System.out.println(Arrays.toString(shuffle(new int[]{7,5,9,7,5,8,10,4,3,3,2,5,9,10},7)));
+        System.out.println("[7,4,5,3,9,3,7,2,5,5,8,9,10,10]");
     }
 
 
+
     //nov 16
+
+    public static int[] shuffle(int[] nums, int n) {
+        int len = nums.length;
+        int[] ans = new int[len];
+        int j=1;
+        ans[0] = nums[0];
+        for(int i=1; i<n; i++){
+            ans[j++] = nums[n+i-1];
+            ans[j++] = nums[i];
+        }
+
+        ans[j] = nums[len-1];
+        return ans;
+    }
     static int countSubStrings(String s){
         long ans =0, count =0;
         for(char ch : s.toCharArray()){
