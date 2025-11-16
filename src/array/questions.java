@@ -16,6 +16,7 @@ public class questions {
 
         System.out.println(Arrays.toString(productExceptSelf(new int[]{-1,1,0,-3,3})));
         System.out.println(maxProduct(new int[]{-2,0,-1}));
+        System.out.println(countSubStrings("0110111"));
     }
 
 
@@ -24,13 +25,14 @@ public class questions {
         int ans =0;
         int count =0;
         for(int i=0; i<s.length(); i++){
-            if(s.charAt(i)=='1'){
+            while (i<s.length() && s.charAt(i)=='1'){
                 count++;
+                i++;
             }
-            else{
-                ans+=(count*(count+1)/2);
-                count=0;
+            if(count!=0){
+                ans+= (count*(count+1))/2;
             }
+            count=0;
         }
         return ans;
     }
