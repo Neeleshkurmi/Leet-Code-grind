@@ -19,6 +19,12 @@ public class questions {
     }
 
 
+    //nov 16
+    static int countSubStrings(String s){
+        int ans =0;
+        int count =0;
+
+    }
     //nov 15
     public static int maxProduct(int[] nums) {
         int maxProd = nums[0];
