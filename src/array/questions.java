@@ -22,8 +22,7 @@ public class questions {
 
     //nov 16
     static int countSubStrings(String s){
-        int ans =0;
-        int count =0;
+        long ans =0, count =0;
         for(char ch : s.toCharArray()){
             if(ch=='1'){
                 count++;
@@ -35,6 +34,21 @@ public class questions {
         }
         ans+= count*(count+1) /2;
         return (int)(ans % Math.pow(10,7));
+
+        /*
+        char[] chars = s.toCharArray();
+		long ans = 0, count = 0;
+		for (char c : chars) {
+			if (c == '1') {
+				count++;
+			} else {
+				ans += count * (count + 1) / 2;
+				count = 0;
+			}
+		}
+		ans += count * (count + 1) / 2;
+		return (int) (ans % 1000000007);
+         */
     }
     //nov 15
     public static int maxProduct(int[] nums) {
