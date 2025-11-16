@@ -23,7 +23,16 @@ public class questions {
     static int countSubStrings(String s){
         int ans =0;
         int count =0;
-
+        for(int i=0; i<s.length(); i++){
+            if(s.charAt(i)=='1'){
+                count++;
+            }
+            else{
+                ans+=(count*(count+1)/2);
+                count=0;
+            }
+        }
+        return ans;
     }
     //nov 15
     public static int maxProduct(int[] nums) {
