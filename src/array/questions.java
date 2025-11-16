@@ -14,16 +14,34 @@ public class questions {
 //                { 13, 14, 15, 16 } }));
 //        System.out.println(spiralOrder(new int[][]{{1,2,3}}));
 
-        System.out.println(Arrays.toString(productExceptSelf(new int[]{-1,1,0,-3,3})));
-        System.out.println(maxProduct(new int[]{-2,0,-1}));
-        System.out.println(countSubStrings("0110111"));
-        System.out.println(Arrays.toString(shuffle(new int[]{7,5,9,7,5,8,10,4,3,3,2,5,9,10},7)));
-        System.out.println("[7,4,5,3,9,3,7,2,5,5,8,9,10,10]");
+//        System.out.println(Arrays.toString(productExceptSelf(new int[]{-1,1,0,-3,3})));
+//        System.out.println(maxProduct(new int[]{-2,0,-1}));
+//        System.out.println(countSubStrings("0110111"));
+//        System.out.println(Arrays.toString(shuffle(new int[]{7,5,9,7,5,8,10,4,3,3,2,5,9,10},7)));
+//        System.out.println("[7,4,5,3,9,3,7,2,5,5,8,9,10,10]");
+        int[] nums = new int[]{4,3,2,7,8,2,3,1};
+        cycleSort(nums);
     }
 
 
 
     //nov 16
+
+    public static void cycleSort(int[] nums){
+        int j=0;
+        while(j<nums.length){
+            int correct= nums[j]-1;
+
+            if(nums[j]!=nums[correct]){
+                int temp = nums[j];
+                nums[j] = nums[correct];
+                nums[correct] = temp;
+            }
+            else{
+                j++;
+            }
+        }
+    }
 
     public static int[] shuffle(int[] nums, int n) {
         int len = nums.length;
