@@ -37,14 +37,12 @@ public class questions {
             if("+-*/".contains(str)){
                 a = stack.pop();
                 b = stack.pop();
-                if(str.equals("+"))
-                    c = a+ b;
-                else if(str.equals("-"))
-                    c = b - a;
-                else if(str.equals("*"))
-                    c = a * b;
-                else
-                    c = b / a;
+                c = switch (str) {
+                    case "+" -> a + b;
+                    case "-" -> b - a;
+                    case "*" -> a * b;
+                    default -> b / a;
+                };
                 stack.push(c);
             }
             else
