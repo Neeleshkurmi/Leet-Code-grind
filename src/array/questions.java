@@ -19,11 +19,57 @@ public class questions {
 //        System.out.println(countSubStrings("0110111"));
 //        System.out.println(Arrays.toString(shuffle(new int[]{7,5,9,7,5,8,10,4,3,3,2,5,9,10},7)));
 //        System.out.println("[7,4,5,3,9,3,7,2,5,5,8,9,10,10]");
-        int[] nums = new int[]{4,3,2,7,8,2,3,1};
-        cycleSort(nums);
+//        int[] nums = new int[]{4,3,2,7,8,2,3,1};
+//        cycleSort(nums);
+        System.out.println(evalRPN(new String[] {"10","6","9","3","+","-11","*","/","*","17","+","5","+"}));
     }
 
 
+    //nov 17
+
+    public static int evalRPN(String[] tokens) {
+        int op1=0, op2=0;
+        Stack<String> stack = new Stack<>();
+        stack.push(tokens[0]);
+        int i=1;
+
+        while(!stack.isEmpty()){
+                if(i==tokens.length && stack.size()==1){
+                    return Integer.parseInt(stack.peek());
+                }
+                if(stack.peek().equals("*")){
+                    stack.pop();
+                    op2 = Integer.parseInt(stack.pop());
+                    op1 = Integer.parseInt(stack.pop());
+                    stack.push(String.valueOf(op1*op2));
+                }
+                else if(stack.peek().equals("-")){
+                    stack.pop();
+                    op2 = Integer.parseInt(stack.pop());
+                    op1 = Integer.parseInt(stack.pop());
+                    stack.push(String.valueOf(op1-op2));
+                }
+                else if(stack.peek().equals("+")){
+                    stack.pop();
+                    op2 = Integer.parseInt(stack.pop());
+                    op1 = Integer.parseInt(stack.pop());
+
+                    stack.push(String.valueOf(op1+op2));
+                }
+                else if(stack.peek().equals("/")){
+                    stack.pop();
+                    op2 = Integer.parseInt(stack.pop());
+                    op1 = Integer.parseInt(stack.pop());
+
+                    stack.push(String.valueOf(op1/op2));
+                }
+
+                else if (i<tokens.length){
+                    stack.push(tokens[i++]);
+                }
+        }
+        return Integer.parseInt(stack.peek());
+    }
 
     //nov 16
 
