@@ -28,47 +28,29 @@ public class questions {
     //nov 17
 
     public static int evalRPN(String[] tokens) {
-        int op1=0, op2=0;
-        Stack<String> stack = new Stack<>();
-        stack.push(tokens[0]);
-        int i=1;
+        Stack<Integer> stack = new Stack<>();
 
-        while(!stack.isEmpty()){
-                if(i==tokens.length && stack.size()==1){
-                    return Integer.parseInt(stack.peek());
-                }
-                if(stack.peek().equals("*")){
-                    stack.pop();
-                    op2 = Integer.parseInt(stack.pop());
-                    op1 = Integer.parseInt(stack.pop());
-                    stack.push(String.valueOf(op1*op2));
-                }
-                else if(stack.peek().equals("-")){
-                    stack.pop();
-                    op2 = Integer.parseInt(stack.pop());
-                    op1 = Integer.parseInt(stack.pop());
-                    stack.push(String.valueOf(op1-op2));
-                }
-                else if(stack.peek().equals("+")){
-                    stack.pop();
-                    op2 = Integer.parseInt(stack.pop());
-                    op1 = Integer.parseInt(stack.pop());
-
-                    stack.push(String.valueOf(op1+op2));
-                }
-                else if(stack.peek().equals("/")){
-                    stack.pop();
-                    op2 = Integer.parseInt(stack.pop());
-                    op1 = Integer.parseInt(stack.pop());
-
-                    stack.push(String.valueOf(op1/op2));
-                }
-
-                else if (i<tokens.length){
-                    stack.push(tokens[i++]);
-                }
+        for(String str: tokens){
+            int a;
+            int b;
+            int c;
+            if("+-*/".contains(str)){
+                a = stack.pop();
+                b = stack.pop();
+                if(str.equals("+"))
+                    c = a+ b;
+                else if(str.equals("-"))
+                    c = b - a;
+                else if(str.equals("*"))
+                    c = a * b;
+                else
+                    c = b / a;
+                stack.push(c);
+            }
+            else
+                stack.push(Integer.parseInt(str));
         }
-        return Integer.parseInt(stack.peek());
+        return stack.pop();
     }
 
     //nov 16
