@@ -21,11 +21,26 @@ public class questions {
 //        System.out.println("[7,4,5,3,9,3,7,2,5,5,8,9,10,10]");
 //        int[] nums = new int[]{4,3,2,7,8,2,3,1};
 //        cycleSort(nums);
-        System.out.println(evalRPN(new String[] {"10","6","9","3","+","-11","*","/","*","17","+","5","+"}));
+//        System.out.println(evalRPN(new String[] {"10","6","9","3","+","-11","*","/","*","17","+","5","+"}));
+        System.out.println(Arrays.toString(finalPrices(new int[]{8,4,6,2,3})));
     }
 
 
     //nov 18
+    public static int[] finalPrices(int[] prices) {
+        int n = prices.length;
+        int[] result = Arrays.copyOf(prices,n);
+        Deque<Integer> stack = new ArrayDeque<>();
+
+        for(int i=0; i<n; i++){
+            while(!stack.isEmpty() && prices[i]<= prices[stack.peek()]){
+                int idx = stack.pop();
+                result[idx] = prices[idx] - prices[i];
+            }
+            stack.push(i);
+        }
+        return result;
+    }
     public boolean isOneBitCharacter(int[] bits) {
         int n = bits.length;
         int i = 0;
