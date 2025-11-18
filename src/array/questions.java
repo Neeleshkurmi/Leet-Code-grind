@@ -26,7 +26,6 @@ public class questions {
 
 
     //nov 18
-
     public boolean isOneBitCharacter(int[] bits) {
         int n = bits.length;
         int i = 0;
@@ -34,9 +33,6 @@ public class questions {
             i += bits[i] + 1;
         return i == n - 1;
     }
-
-    //nov 17
-
     public static int[] exclusiveTime(int n, List<String> logs) {
         int[] result = new int[n];
         Stack<Integer> stack = new Stack<>();
@@ -64,7 +60,7 @@ public class questions {
         }
         return result;
     }
-
+    //nov 17
     public static int evalRPN(String[] tokens) {
         Stack<Integer> stack = new Stack<>();
 
@@ -88,9 +84,7 @@ public class questions {
         }
         return stack.pop();
     }
-
     //nov 16
-
     public static void cycleSort(int[] nums){
         int j=0;
         while(j<nums.length){
@@ -106,7 +100,6 @@ public class questions {
             }
         }
     }
-
     public static int[] shuffle(int[] nums, int n) {
         int len = nums.length;
         int[] ans = new int[len];
