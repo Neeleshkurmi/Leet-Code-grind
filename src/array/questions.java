@@ -22,10 +22,41 @@ public class questions {
 //        int[] nums = new int[]{4,3,2,7,8,2,3,1};
 //        cycleSort(nums);
 //        System.out.println(evalRPN(new String[] {"10","6","9","3","+","-11","*","/","*","17","+","5","+"}));
-        System.out.println(Arrays.toString(finalPrices(new int[]{8,4,6,2,3})));
+        System.out.println(Arrays.toString(finalPrices(new int[]{73,74,75,71,69,72,76,73})));
     }
 
 
+    //nov 19
+    public int findFinalValue(int[] nums, int original) {
+        Set<Integer> set = new HashSet<>();
+
+        for(int i=0; i<nums.length; i++){
+            set.add(nums[i]);
+        }
+
+        while(set.contains(original)){
+            original *=2;
+        }
+        return original;
+    }
+    public boolean bs(int [] nums, int target){
+        int start =0, end = nums.length-1;
+
+        while(start<=end){
+            int mid = start+ (end-start) /2;
+
+            if(nums[mid]==target){
+                return true;
+            }
+            else if(nums[mid]>target){
+                end = mid-1;
+            }
+            else {
+                start = mid+1;
+            }
+        }
+        return false;
+    }
     //nov 18
     public static int[] finalPrices(int[] prices) {
         int n = prices.length;
@@ -33,9 +64,9 @@ public class questions {
         Deque<Integer> stack = new ArrayDeque<>();
 
         for(int i=0; i<n; i++){
-            while(!stack.isEmpty() && prices[i]<= prices[stack.peek()]){
+            while(!stack.isEmpty() && prices[i]>= prices[stack.peek()]){
                 int idx = stack.pop();
-                result[idx] = prices[idx] - prices[i];
+                result[idx] = prices[i] - prices[idx];
             }
             stack.push(i);
         }
