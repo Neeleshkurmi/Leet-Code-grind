@@ -23,10 +23,81 @@ public class questions {
 //        cycleSort(nums);
 //        System.out.println(evalRPN(new String[] {"10","6","9","3","+","-11","*","/","*","17","+","5","+"}));
         System.out.println(Arrays.toString(finalPrices(new int[]{73,74,75,71,69,72,76,73})));
+        System.out.println(largestRectangleArea(new int[] {2,1,5,6,2,3}));
     }
 
 
     //nov 19
+    public static int largestRectangleArea(int[] heights) {
+        int max = Integer.MIN_VALUE;
+        Deque<Integer> stack = new ArrayDeque<>();
+
+        for (int i = 0; i <heights.length; i++) {
+
+            while(!stack.isEmpty() && heights[stack.peek()]>heights[i]){
+                int height = heights[stack.pop()];
+
+                int leftB =0;
+                if(stack.isEmpty()){
+                    leftB = -1;
+                }
+                else {
+                    leftB = stack.peek();
+                }
+
+                int rightB = i;
+
+                int width = rightB - leftB - 1;
+                max = Math.max(max, width*height);
+            }
+            stack.push(i);
+        }
+        return max;
+    }
+
+//    public static int largestRectangleArea(int[] heights) {
+//        // Step 1️⃣: Append a sentinel 0 height to flush the stack at the end
+//        int n = heights.length;
+//        int[] extended = Arrays.copyOf(heights, n + 1);
+//        extended[n] = 0;  // sentinel
+//
+//        // Step 2️⃣: Stack stores indices of bars waiting for a smaller bar
+//        Deque<Integer> stack = new ArrayDeque<>();
+//        int maxArea = 0;
+//
+//        // Step 3️⃣: Traverse all bars
+//        for (int i = 0; i < extended.length; i++) {
+//            // While current bar is smaller than top of stack → resolve taller bars
+//            while (!stack.isEmpty() && extended[i] < extended[stack.peek()]) {
+//                int height = extended[stack.pop()]; // height of resolved bar
+//
+//                // Determine width boundaries
+//                int leftBoundary;
+//                if (stack.isEmpty()) {
+//                    // If no smaller bar on the left, extend from index 0
+//                    leftBoundary = -1;
+//                } else {
+//                    // Previous smaller bar defines left limit
+//                    leftBoundary = stack.peek();
+//                }
+//
+//                int rightBoundary = i; // Current smaller bar defines right limit
+//
+//                // Compute width and area
+//                int width = rightBoundary - leftBoundary - 1;
+//                int area = height * width;
+//
+//                // Track the largest area found
+//                maxArea = Math.max(maxArea, area);
+//            }
+//
+//            // Current bar now "waits" for a smaller one
+//            stack.push(i);
+//        }
+//
+//        return maxArea;
+//    }
+
     public int[] dailyTemperatures(int[] temperatures) {
         int n = temperatures.length;
         int[] result = new int[n];
