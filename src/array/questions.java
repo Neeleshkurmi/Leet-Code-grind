@@ -23,13 +23,16 @@ public class questions {
 //        cycleSort(nums);
 //        System.out.println(evalRPN(new String[] {"10","6","9","3","+","-11","*","/","*","17","+","5","+"}));
         System.out.println(Arrays.toString(finalPrices(new int[]{73,74,75,71,69,72,76,73})));
-        System.out.println(largestRectangleArea(new int[] {2,1,5,6,2,3}));
+        System.out.println(largestRectangleArea(new int[] {2,4}));
     }
 
 
     //nov 19
-    public static int largestRectangleArea(int[] heights) {
+    public static int largestRectangleArea(int[] nums) {
         int max = Integer.MIN_VALUE;
+        int[] heights = Arrays.copyOf(nums, nums.length + 1);
+
+        heights[nums.length] =0;
         Deque<Integer> stack = new ArrayDeque<>();
 
         for (int i = 0; i <heights.length; i++) {
