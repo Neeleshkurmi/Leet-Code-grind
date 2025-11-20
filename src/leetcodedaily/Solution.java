@@ -6,10 +6,45 @@ import java.util.List;
 
 public class Solution {
     public static void main(String[] args) {
-        System.out.println(upperBound(new int[]{0,2,2,2},2));
+
     }
 
     //nov 20
+    static int[] searchRange(int[] nums, int target) {
+        return new int[0];
+    }
+    static int findFloor(int[] arr, int x) {
+        int ans =-1, start =0, end = arr.length-1;
+
+        while(start<=end){
+            int mid = (start+end)/2;
+
+            if(arr[mid]<=x){
+                ans  = mid ;
+                start = mid+1;
+            }
+            else {
+                end = mid-1;
+            }
+        }
+        return ans;
+    }
+    static int searchInsert(int[] nums, int target) {
+        int ans = nums.length, start =0, end = ans-1;
+
+        while(start<=end){
+            int mid = (start+end)/2;
+
+            if(nums[mid]>=target){
+                ans = mid;
+                end = mid -1;
+            }
+            else {
+                start = mid +1;
+            }
+        }
+        return ans;
+    }
     static int upperBound(int[] nums, int target){
         int n = nums.length, start =0, end = n-1;
 
