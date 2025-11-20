@@ -5,6 +5,43 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Solution {
+    public static void main(String[] args) {
+        System.out.println(upperBound(new int[]{0,2,2,2},2));
+    }
+
+    //nov 20
+    static int upperBound(int[] nums, int target){
+        int n = nums.length, start =0, end = n-1;
+
+        while(start<=end){
+            int mid = (start+end)/2;
+
+            if(nums[mid]>target){
+                n =mid;
+                end = mid-1;
+            }
+            else {
+                start = mid +1;
+            }
+        }
+        return n;
+    }
+    static int lowerBound(int[] nums, int target){
+        int n = nums.length, start = 0, end = n-1;
+
+        while(start<=end){
+            int mid = (start+end) /2;
+
+            if(nums[mid]>=target){
+                n = mid;
+                end = mid -1;
+            }
+            else {
+                start = mid +1;
+            }
+        }
+        return n;
+    }
     public int intersectionSizeTwo(int[][] intervals) {
         Arrays.sort(intervals, (a, b) -> {
             if (a[1] == b[1]) {
