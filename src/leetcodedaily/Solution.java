@@ -4,11 +4,35 @@ import java.util.*;
 
 public class Solution {
     public static void main(String[] args) {
-        System.out.println(countPalindromicSubsequence("abcdefga"));
+        System.out.println(findMin(new int[]{4,5,6,7,0,1,2}));
     }
 
     //nov 21
 
+    static int findMin(int[] nums) {
+        int start =0, end =nums.length;
+
+        while(start<end){
+            int mid = (start+end)/2;
+
+            if(nums[mid]>nums[mid+1]){
+                start = mid+1;
+            }
+            else{
+                end = mid;
+            }
+        }
+        return nums[start];
+    }
+    static int singleNonDuplicate(int[] nums) {
+        int xor =0;
+
+        for(int i=0; i<nums.length; i++){
+            xor^=nums[i];
+            xor^=(i+1)^(i+1);
+        }
+        return xor;
+    }
     static int countPalindromicSubsequence(String s) {
         Set<Character> set = new HashSet<>();
         int ans =0;
@@ -25,7 +49,6 @@ public class Solution {
         }
         return ans;
     }
-
     static int unique(String s, int start, int end){
         Set<Character> set = new HashSet<>();
 
@@ -35,7 +58,6 @@ public class Solution {
         }
         return set.size();
     }
-
     static int last(String s, int start){
         int last =-1;
         for(int i=start+1; i<s.length(); i++){
@@ -45,8 +67,6 @@ public class Solution {
         }
         return last;
     }
-
-
     public static int search(ArrayList<Integer> arr, int n, int k) {
         int start =0, end = n-1;
 
