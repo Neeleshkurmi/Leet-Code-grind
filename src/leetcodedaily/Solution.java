@@ -1,15 +1,70 @@
 package leetcodedaily;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Solution {
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(searchRange(new int[]{5,7,7,8,8,10},6)));
+        System.out.println(countPalindromicSubsequence("abcdefga"));
     }
 
     //nov 21
+
+    static int countPalindromicSubsequence(String s) {
+        Set<Character> set = new HashSet<>();
+        int ans =0;
+        for(int i=0; i<s.length(); i++){
+
+            if(!set.contains(s.charAt(i))){
+                int last = last(s, i);
+                if(last!=-1){
+                    int unique = unique(s, i+1, last-1);
+                    ans +=unique;
+                }
+                set.add(s.charAt(i));
+            }
+        }
+        return ans;
+    }
+
+    static int unique(String s, int start, int end){
+        Set<Character> set = new HashSet<>();
+
+        while(start<=end){
+            set.add(s.charAt(start));
+            start++;
+        }
+        return set.size();
+    }
+
+    static int last(String s, int start){
+        int last =-1;
+        for(int i=start+1; i<s.length(); i++){
+            if(s.charAt(start) == s.charAt(i)){
+                last = i;
+            }
+        }
+        return last;
+    }
+
+
+    public static int search(ArrayList<Integer> arr, int n, int k) {
+        int start =0, end = n-1;
+
+        while(start<=end){
+            int mid = (start+end)/2;
+
+            if(arr.get(mid)==k){
+                return mid;
+            }
+            else if(arr.get(start)<=k && arr.get(mid)>k){
+                end = mid -1;
+            }
+            else {
+                start = mid +1;
+            }
+        }
+        return -1;
+    }
     static int count(int arr[], int target) {
         int last = last(arr, target);
         int first = first(arr, target);
