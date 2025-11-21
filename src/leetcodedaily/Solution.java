@@ -6,13 +6,64 @@ import java.util.List;
 
 public class Solution {
     public static void main(String[] args) {
+        System.out.println(Arrays.toString(searchRange(new int[]{5,7,7,8,8,10},6)));
+    }
 
+    //nov 21
+    static int count(int arr[], int target) {
+        int last = last(arr, target);
+        int first = first(arr, target);
+        return first>=0 && last>=0 ? last-first+1 : 0;
+    }
+    static int[] occour(int[] nums, int target){
+        return new int[]{first(nums,target),last(nums,target)};
+    }
+    static int first(int[] nums, int target){
+        int ans =-1 , start = 0, end = nums.length-1;
+
+        while(start<=end){
+            int mid = (start+end)/2;
+
+            if(nums[mid]==target){
+                ans = mid;
+                end = mid-1;
+            }
+            else if(nums[mid]>target){
+                end = mid-1;
+            }
+            else {
+                start = mid +1;
+            }
+        }
+        return ans;
+    }
+    static int last(int[] nums, int target){
+        int ans =-1, start = 0, end = nums.length-1;
+
+        while(start<=end){
+            int mid = (start+end)/2;
+
+            if(nums[mid]==target){
+                ans = mid;
+                start = mid+1;
+            }
+            else if(nums[mid]>target){
+                end = mid-1;
+            }
+            else {
+                start = mid +1;
+            }
+        }
+        return ans;
     }
 
     //nov 20
     static int[] searchRange(int[] nums, int target) {
-        return new int[0];
+        int first = first(nums,target);
+        int last = last(nums,target);
+        return new int[]{first,last};
     }
+
     static int findFloor(int[] arr, int x) {
         int ans =-1, start =0, end = arr.length-1;
 
