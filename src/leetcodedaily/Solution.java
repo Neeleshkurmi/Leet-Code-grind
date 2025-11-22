@@ -4,13 +4,23 @@ import java.util.*;
 
 public class Solution {
     public static void main(String[] args) {
-        System.out.println(findMin(new int[]{4,5,6,7,0,1,2}));
+        System.out.println(findMin(new int[]{2,3,4,5,1}));
+    }
+
+    //no 22
+    public int minimumOperations(int[] nums) {
+        int count =0;
+
+        for(int num : nums){
+            if(num%3!=0) count++;
+        }
+        return count;
     }
 
     //nov 21
 
     static int findMin(int[] nums) {
-        int start =0, end =nums.length;
+        int start =0, end =nums.length-1;
 
         while(start<end){
             int mid = (start+end)/2;
