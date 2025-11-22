@@ -19,7 +19,6 @@ public class Solution {
     }
 
     //nov 21
-
     static int findMin(int[] nums) {
         int start =0, end =nums.length-1;
 
