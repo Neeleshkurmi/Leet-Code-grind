@@ -5,6 +5,7 @@ import java.util.*;
 public class Solution {
     public static void main(String[] args) {
         System.out.println(findMin(new int[]{2,3,4,5,1}));
+
     }
 
     //no 22
