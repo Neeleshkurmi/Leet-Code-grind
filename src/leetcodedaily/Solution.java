@@ -8,6 +8,19 @@ public class Solution {
         System.out.println(smallestRepunitDivByK(23));
     }
 
+    //nov 26
+    static List<List<Integer>> threeSum(int[] nums){
+        List<List<Integer>> result = new ArrayList<>();
+
+        for(int i=0; i<nums.length-2; i++){
+
+            if()
+            int left = i+1, right = nums.length-1;
+
+            while()
+        }
+    }
+
     //nov 25
     public static int smallestRepunitDivByK(int k) {
         if(k==1) return 1;
