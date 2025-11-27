@@ -10,7 +10,10 @@ public class Solution {
     }
 
     //nov 27
-    // i haven't solve any question at today but before 12 am i will solve at least one question
+    static int sum(){
+        return 0;
+    }
+
 
     //nov 26
     static List<List<Integer>> threeSum(int[] nums){
