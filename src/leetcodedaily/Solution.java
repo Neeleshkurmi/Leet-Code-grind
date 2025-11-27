@@ -9,6 +9,9 @@ public class Solution {
         System.out.println(threeSum(new int[]{-1,0,1,2,-1,-4}));
     }
 
+    //nov 27
+    // i haven't solve any question at today but before 12 am i will solve at least one question
+
     //nov 26
     static List<List<Integer>> threeSum(int[] nums){
         List<List<Integer>> result = new ArrayList<>();
