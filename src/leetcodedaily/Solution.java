@@ -3,21 +3,57 @@ package leetcodedaily;
 import java.util.*;
 
 public class Solution {
+    class ListNode {
+        int val;
+        ListNode next;
+        ListNode() {}
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    }
+
     public static void main(String[] args) {
         int num = (int)(Math.pow(10,5));
         System.out.println(smallestRepunitDivByK(23));
         System.out.println(threeSum(new int[]{-1,0,1,2,-1,-4}));
     }
 
+
+    //nov 28
+    public static int titleToNumber(String columnTitle) {
+        int val = 64, ans =0, n = columnTitle.length();
+
+        for(int i=0; i<n; i++){
+            ans+= ((int)(Math.pow(26, n-i-1)))* (columnTitle.charAt(i)-val);
+        }
+        return ans;
+    }
+    //203. Remove Linked List Elements
+    public static ListNode removeElements(ListNode head, int val) {
+        ListNode prev = null;
+        ListNode curr = head;
+
+        while(curr!=null){
+            if(curr.val == val){
+                ListNode n = (curr.next!=null) ? curr.next: null;
+                if(prev!=null) {prev.next = n; curr = n;}
+
+                // if prev is null and current value is equal to val
+                else {
+                    prev = curr;
+                    prev.next = null;
+                    prev = null;
+                    curr = n;
+                    head = curr;
+                }
+            }
+            else{
+                prev = curr;
+                curr = curr.next;
+            }
+        }
+        return head;
+    }
     //nov 27
-
-
-
-
-
-
-
-
 
     //nov 26
     static List<List<Integer>> threeSum(int[] nums){
