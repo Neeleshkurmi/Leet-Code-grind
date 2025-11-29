@@ -15,10 +15,32 @@ public class Solution {
 //        int num = (int)(Math.pow(10,5));
 //        System.out.println(smallestRepunitDivByK(23));
 //        System.out.println(threeSum(new int[]{-1,0,1,2,-1,-4}));
-          System.out.println(convert("PAYPALISHIRING", 3));
+        System.out.println(myAtoi("11-0"));
     }
 
     //nov 29
+    public static int myAtoi(String s) {
+        int sign =1, i=0;
+        long num =0;
+
+        while(i<s.length() && s.charAt(i) == ' ') i++;
+
+        if(i<s.length() && (s.charAt(i)=='-' || s.charAt(i)=='+')) {
+            sign = s.charAt(i)=='-'? -1:+1;
+            i++;
+        }
+
+        while(i<s.length() && Character.isDigit(s.charAt(i))){
+            int digit = s.charAt(i)-'0';
+            num = num*10 + digit;
+            i++;
+        }
+
+        if(num<Integer.MIN_VALUE) return Integer.MIN_VALUE;
+        if(num>Integer.MAX_VALUE) return Integer.MAX_VALUE;
+
+        return (int) (num*sign);
+    }
     public static String convert(String s, int numRows) {
         if(numRows==1 || numRows>=s.length()) return s;
 
