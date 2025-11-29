@@ -12,11 +12,47 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        int num = (int)(Math.pow(10,5));
-        System.out.println(smallestRepunitDivByK(23));
-        System.out.println(threeSum(new int[]{-1,0,1,2,-1,-4}));
+//        int num = (int)(Math.pow(10,5));
+//        System.out.println(smallestRepunitDivByK(23));
+//        System.out.println(threeSum(new int[]{-1,0,1,2,-1,-4}));
+          System.out.println(convert("PAYPALISHIRING", 3));
     }
 
+    //nov 29
+    public static String convert(String s, int numRows) {
+        if(numRows==1 || numRows>=s.length()) return s;
+
+        int curr = 0;
+        boolean gd = false;
+        boolean gu= false;
+        StringBuilder[] sb = new StringBuilder[numRows];
+
+        for(int i = 0; i < numRows; i++) {
+            sb[i] = new StringBuilder();
+        }
+
+        for(int i=0; i<s.length(); i++){
+            sb[curr] = sb[curr].append(s.charAt(i));
+
+            if(curr==0 ) {
+                gd = true;
+                gu = false;
+            }
+            if(curr == numRows-1) {
+                gu = true;
+                gd = false;
+            }
+
+            if(gd) curr++;
+            else if(gu) curr--;
+        }
+
+        StringBuilder ans = new StringBuilder();
+        for(StringBuilder a : sb){
+            ans.append(a.toString());
+        }
+        return ans.toString();
+    }
 
     //nov 28
     public List<String> summaryRanges(int[] nums) {
