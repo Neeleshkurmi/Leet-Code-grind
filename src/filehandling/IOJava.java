@@ -3,10 +3,11 @@ package filehandling;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.nio.*;
+import java.util.logging.Logger;
 
 public class IOJava {
-    public static void main(String[] args){
+    public static void main(String[] args) throws RuntimeException {
+        Logger logger = Logger.getLogger(IOJava.class.getName());
 
         try(FileWriter fileWriter = new FileWriter("example.txt")){
             int i=1;
@@ -15,7 +16,7 @@ public class IOJava {
                 i++;
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            logger.info(String.valueOf(e));
         }
 
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader("example.txt"))){
@@ -24,7 +25,7 @@ public class IOJava {
                 System.out.println(line);
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            logger.info(String.valueOf(e));
         }
     }
 }
