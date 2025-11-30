@@ -2,16 +2,21 @@ package filehandling;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class FileHandling {
 
     public static void main(String[] args) throws IOException {
 
-        try (FileWriter fileWriter = new FileWriter("example.txt")) {
-            fileWriter.write("hello");
-            fileWriter.close();
+        try {
+            Path path = Paths.get("Path.txt");
+            Files.createFile(path);
+            Files.write(path, new byte[]{0,0,0});
+        }catch (Exception e) {
+            e.printStackTrace();
         }
 
         FileReader fileReader = new FileReader("example.txt");
