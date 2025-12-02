@@ -11,24 +11,6 @@ public class questions {
       ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
     public static void main(String[] args) {
-//        int[][] mat = new int[][]{{1,2,3},{4,5,6},{7,8,9}};
-//        System.out.println(Arrays.deepToString(mat));
-//        rotate(mat);
-//        System.out.println(Arrays.deepToString(mat));
-//        System.out.println(spiralOrder(new int[][]{ { 1, 2, 3, 4 },
-//                { 5, 6, 7, 8 },
-//                { 9, 10, 11, 12 },
-//                { 13, 14, 15, 16 } }));
-//        System.out.println(spiralOrder(new int[][]{{1,2,3}}));
-
-//        System.out.println(Arrays.toString(productExceptSelf(new int[]{-1,1,0,-3,3})));
-//        System.out.println(maxProduct(new int[]{-2,0,-1}));
-//        System.out.println(countSubStrings("0110111"));
-//        System.out.println(Arrays.toString(shuffle(new int[]{7,5,9,7,5,8,10,4,3,3,2,5,9,10},7)));
-//        System.out.println("[7,4,5,3,9,3,7,2,5,5,8,9,10,10]");
-//        int[] nums = new int[]{4,3,2,7,8,2,3,1};
-//        cycleSort(nums);
-//        System.out.println(evalRPN(new String[] {"10","6","9","3","+","-11","*","/","*","17","+","5","+"}));
         System.out.println(Arrays.toString(finalPrices(new int[]{73,74,75,71,69,72,76,73})));
         System.out.println(largestRectangleArea(new int[] {2,4}));
     }
