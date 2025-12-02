@@ -1,5 +1,7 @@
 package leetcodedaily;
 
+import array.questions;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileWriter;
@@ -32,6 +34,42 @@ public class Solution {
         System.out.println(myAtoi("11-0"));
     }
 
+    //dec 2
+    public boolean isIsomorphic(String s, String t) {
+        Map<Character, Character> map = new HashMap<>();
+
+        for(int i=0; i<s.length(); i++){
+            if(map.containsKey(s.charAt(i)) && map.get(s.charAt(i))!= t.charAt(i)){
+                return false;
+            }
+            map.put(s.charAt(i), t.charAt(i));
+        }
+        Map<Character, Character> ma = new HashMap<>();
+
+        for(int i=0; i<s.length(); i++){
+            if(ma.containsKey(t.charAt(i)) && ma.get(t.charAt(i))!= s.charAt(i)){
+                return false;
+            }
+            ma.put(t.charAt(i), s.charAt(i));
+        }
+        return true;
+    }
+    public boolean isPalindrome(ListNode head) {
+        if(head==null || head.next==null) return true;
+        questions.ListNode i = null;
+        questions.ListNode ans = helper(head, i, head);
+        return ans==null?true:false;
+    }
+
+    private ListNode helper(ListNode head, ListNode i, ListNode j){
+        if(j==null){
+            return head;
+        }
+        i = helper(head, i, j.next);
+        if(i.val!=j.val) return new questions.ListNode(-1);
+        return i.next;
+    }
+
     //nov 29
     public static int myAtoi(String s) {
         int sign =1, i=0;
@@ -52,9 +90,6 @@ public class Solution {
             if (sign * num < Integer.MIN_VALUE) return Integer.MIN_VALUE;
             i++;
         }
-
-
-
         return (int) (num*sign);
     }
     public static String convert(String s, int numRows) {
