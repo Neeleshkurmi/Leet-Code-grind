@@ -3,6 +3,13 @@ package array;
 import java.util.*;
 
 public class questions {
+    class ListNode {
+      int val;
+      ListNode next;
+      ListNode() {}
+      ListNode(int val) { this.val = val; }
+      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    }
     public static void main(String[] args) {
 //        int[][] mat = new int[][]{{1,2,3},{4,5,6},{7,8,9}};
 //        System.out.println(Arrays.deepToString(mat));
@@ -26,6 +33,42 @@ public class questions {
         System.out.println(largestRectangleArea(new int[] {2,4}));
     }
 
+
+    //dec 2
+    public boolean isIsomorphic(String s, String t) {
+        Map<Character, Character> map = new HashMap<>();
+
+        for(int i=0; i<s.length(); i++){
+            if(map.containsKey(s.charAt(i)) && map.get(s.charAt(i))!= t.charAt(i)){
+                return false;
+            }
+            map.put(s.charAt(i), t.charAt(i));
+        }
+        Map<Character, Character> ma = new HashMap<>();
+
+        for(int i=0; i<s.length(); i++){
+            if(ma.containsKey(t.charAt(i)) && ma.get(t.charAt(i))!= s.charAt(i)){
+                return false;
+            }
+            ma.put(t.charAt(i), s.charAt(i));
+        }
+        return true;
+    }
+    public boolean isPalindrome(ListNode head) {
+        if(head==null || head.next==null) return true;
+        ListNode i = null;
+        ListNode ans = helper(head, i, head);
+        return ans==null?true:false;
+    }
+
+    private ListNode helper(ListNode head, ListNode i, ListNode j){
+        if(j==null){
+            return head;
+        }
+        i = helper(head, i, j.next);
+        if(i.val!=j.val) return new ListNode(-1);
+        return i.next;
+    }
 
     //nov 19
     public static int largestRectangleArea(int[] nums) {
