@@ -56,8 +56,8 @@ public class Solution {
     }
     public boolean isPalindrome(ListNode head) {
         if(head==null || head.next==null) return true;
-        questions.ListNode i = null;
-        questions.ListNode ans = helper(head, i, head);
+        ListNode i = null;
+        ListNode ans = helper(head, i, head);
         return ans==null?true:false;
     }
 
@@ -66,7 +66,7 @@ public class Solution {
             return head;
         }
         i = helper(head, i, j.next);
-        if(i.val!=j.val) return new questions.ListNode(-1);
+        if(i.val!=j.val) return new ListNode(-1);
         return i.next;
     }
 
