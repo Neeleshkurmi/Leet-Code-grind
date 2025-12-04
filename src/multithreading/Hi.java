@@ -42,3 +42,20 @@ class MyRunnable implements Runnable{
         t.start();
     }
 }
+class Daemon extends Thread{
+    @Override
+    public void run() {
+        if(this.isDaemon()){
+            System.out.println("its a daemon thread");
+        }
+        else System.out.println("not a daemon thread");
+    }
+
+    public static void main(String[] args) {
+        Daemon d = new Daemon();
+        Daemon daemon = new Daemon();
+        d.setDaemon(true);
+        d.start();
+        daemon.start();
+    }
+}
