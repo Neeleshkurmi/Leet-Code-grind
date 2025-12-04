@@ -32,8 +32,30 @@ public class Solution {
 //        System.out.println(smallestRepunitDivByK(23));
 //        System.out.println(threeSum(new int[]{-1,0,1,2,-1,-4}));
         System.out.println(myAtoi("11-0"));
+        System.out.println(findLHS(new int[]{1,1,1}));
     }
 
+    //dec 4
+    public static int findLHS(int[] nums) {
+        Arrays.sort(nums);
+        int max = 0;
+        int i=0, j=0, length=0;
+        while(j<nums.length){
+            if(nums[j]==nums[i]){
+                j++;
+            }
+            else if(nums[j]-nums[i]==1){
+                max = Math.max(max, j-i+1);
+                j++;
+            }
+            else if(nums[j]-nums[i]!=1){
+                while(i<j && nums[j]-nums[i]!=1){
+                    i++;
+                }
+            }
+        }
+        return max;
+    }
     //dec 2
     public boolean isIsomorphic(String s, String t) {
         Map<Character, Character> map = new HashMap<>();
@@ -60,7 +82,6 @@ public class Solution {
         ListNode ans = helper(head, i, head);
         return ans==null?true:false;
     }
-
     private ListNode helper(ListNode head, ListNode i, ListNode j){
         if(j==null){
             return head;
