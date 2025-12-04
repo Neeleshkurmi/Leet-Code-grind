@@ -11,7 +11,8 @@ public class ExceptionHandling {
         } catch (Exception e) {
             logger.info(String.valueOf(e));
         }
-
-        logger.info("rest of the code");
+        int age = 14;
+        System.out.println("The voter's age is");
+        System.out.println();
     }
 }
