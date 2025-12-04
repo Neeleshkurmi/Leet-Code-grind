@@ -9,7 +9,9 @@ public class ExceptionHandling {
         try {
             int a = 2/0;
         } catch (Exception e) {
-            throw new CustomException(String.valueOf(e));
+            logger.info(String.valueOf(e));
         }
+
+        logger.info("rest of the code");
     }
 }
