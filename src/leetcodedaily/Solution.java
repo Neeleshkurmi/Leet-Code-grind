@@ -31,8 +31,8 @@ public class Solution {
 //        int num = (int)(Math.pow(10,5));
 //        System.out.println(smallestRepunitDivByK(23));
 //        System.out.println(threeSum(new int[]{-1,0,1,2,-1,-4}));
-        System.out.println(myAtoi("11-0"));
-        System.out.println(findLHS(new int[]{1,1,1}));
+//        System.out.println(myAtoi("11-0"));
+//        System.out.println(findLHS(new int[]{1,1,1}));
     }
 
     //dec 4
