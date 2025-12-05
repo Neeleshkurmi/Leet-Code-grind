@@ -1,9 +1,5 @@
 package leetcodedaily;
 
-import array.questions;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
@@ -33,9 +29,32 @@ public class Solution {
 //        System.out.println(threeSum(new int[]{-1,0,1,2,-1,-4}));
 //        System.out.println(myAtoi("11-0"));
 //        System.out.println(findLHS(new int[]{1,1,1}));
+        System.out.println(minimumDifference(new int[]{9,4,1,7},2));
     }
 
     //dec 4
+    public static int minimumDifference(int[] nums, int k) {
+        if(k==1) return 0;
+        Arrays.sort(nums);
+
+        int min = Integer.MAX_VALUE;
+        int i=0, j=0, diff=0;
+
+        while(j<k){
+            diff = nums[j]-diff;
+            j++;
+        }
+        min = Math.min(diff, min);
+        int prev = diff;
+
+        while(j<nums.length){
+            diff = nums[j] - prev - nums[i];
+            min = Math.min(min, diff);
+            i++; prev = diff;
+            j++;
+        }
+        return min;
+    }
     public static int findLHS(int[] nums) {
         Arrays.sort(nums);
         int max = 0;
