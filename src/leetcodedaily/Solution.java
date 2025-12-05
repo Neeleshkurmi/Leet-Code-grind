@@ -32,6 +32,9 @@ public class Solution {
         System.out.println(minimumDifference(new int[]{9,4,1,7},2));
     }
 
+    //dec 5
+    // dec 5 solutions are done in ---> ../array/search/Solution.java
+
     //dec 4
     public static int minimumDifference(int[] nums, int k) {
         if(k==1) return 0;
