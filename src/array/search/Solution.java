@@ -7,11 +7,29 @@ import java.util.List;
 
 public class Solution {
     public static void main(String[] args) {
+
         System.out.println(binarySearch(new int[]{},3));
         System.out.println(leader(new int[] {16, 17, 4, 3, 5, 2}));
         System.out.println(search2(new int[]{1,0,1,1,1},0));
+        System.out.println(findMin(new int[]{2,1}));
     }
 
+    //dec 6
+    public static int findMin(int[] nums) {
+        int start = 0, end = nums.length-1;
+
+        while(start<end){
+            int mid = start+ (end -start)/2;
+
+            if(nums[mid]>nums[end]){
+                start = mid+1;
+            }
+            else {
+                end = mid;
+            }
+        }
+        return nums[start];
+    }
 
     //dec 5
     // variation 2 same question
