@@ -12,34 +12,40 @@ public class Solution {
 //        System.out.println(leader(new int[] {16, 17, 4, 3, 5, 2}));
 //        System.out.println(search2(new int[]{1,0,1,1,1},0));
 //        System.out.println(findMin(new int[]{2,1}));
-        System.out.println(findMin(new int[]{1,2,3,4,5,6}));
-        System.out.println(findMin(new int[]{8,1,2,3,4,5,6,7}));
-        System.out.println(findMin(new int[]{1,2}));
-        System.out.println(findMin(new int[]{2,0}));
-        System.out.println(findMin(new int[]{6,7,8,1,2,3,4,5}));
+//        System.out.println(findKRotation(new int[]{1,2,3,4,5,6}));
+//        System.out.println(findKRotation(new int[]{8,1,2,3,4,5,6,7}));
+//        System.out.println(findKRotation(new int[]{1,2}));
+//        System.out.println(findKRotation(new int[]{2,0}));
+//        System.out.println(findKRotation(new int[]{6,7,8,1,2,3,4,5}));\\\
+        System.out.println(singleNonDuplicate(new int[]{3,3,7,7,10,11,11}));
     }
 
     //dec 6
-    public static int findKRotation(int[] arr) {
-//        int count =0;
-//
-//        for(int i=1; i<arr.length; i++){
-//            if(arr[i]<arr[i-1]){
-//                count = i;
-//            }
-//        }
-//        return count;
-        int start =0, end = arr.length-1;
-        while(start<end){
-            int mid = start+(end -start)/2;
-            if(arr[start]>arr[mid]){
-                end = mid;
+    public static int singleNonDuplicate(int[] nums) {
+        int xor =0;
+
+        for(int i=0; i<nums.length; i++){
+            xor^=nums[i];
+        }
+        return xor;
+    }
+    public static int findKRotation(int[] nums) {
+        int index =0, ans =Integer.MAX_VALUE;
+        int start = 0, end = nums.length-1;
+
+        while(start<=end){
+            int mid = start+(end-start)/2;
+
+            if(nums[start]<=nums[mid]){
+                ans = (nums[start]<ans)? nums[index=start] : ans;
+                start = mid+1;
             }
-            else {
-                start =mid+1;
+            else{
+                ans = (nums[mid]<ans)? nums[index=mid] : ans;
+                end = mid-1;
             }
         }
-        return start;
+        return index;
     }
     public static int findMin(int[] nums) {
         int ans= Integer.MAX_VALUE;
