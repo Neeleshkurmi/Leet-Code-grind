@@ -16,10 +16,57 @@ public class Solution {
 //        System.out.println(findKRotation(new int[]{1,2}));
 //        System.out.println(findKRotation(new int[]{2,0}));
 //        System.out.println(findKRotation(new int[]{6,7,8,1,2,3,4,5}));\\\
-        System.out.println(singleNonDuplicate(new int[]{3,3,7,7,10,11,11}));
+//        System.out.println(singleNonDuplicate(new int[]{3,3,7,7,10,11,11}));
+//        System.out.println(findPeakElement(new int[] {1,2,1,3,5,6,4}));
+
+        System.out.println(mySqrt(8));
+        System.out.println(mySqrt(5));
+        System.out.println(mySqrt(13));
+        System.out.println(mySqrt(16));
+        System.out.println(mySqrt(1));
     }
 
     //dec 6
+    //https://leetcode.com/problems/sqrtx/submissions/1848606840
+    public static int mySqrt(int x) {
+        if(x==0 || x==1) return x;
+
+        int start =1, end =x;
+        int ans =1;
+
+        while(start<=end){
+            int mid =  start+ (end - start)/2;
+
+            if(mid==x/mid) return mid;
+
+            else if(mid<x/mid){
+                ans = mid;
+                start = mid+1;
+            }
+            else{
+                end = mid-1;
+            }
+        }
+        return ans;
+    }
+    public static int findPeakElement(int[] nums) {
+        int start = 0, end = nums.length-1, peek=Integer.MIN_VALUE;
+        int index=0;
+
+        while(start<end){
+            int mid = start+(end - start)/2;
+
+            if(nums[mid]<nums[mid+1]){
+                peek = (nums[mid+1]>peek)? nums[index = mid+1] : peek;
+                start = mid+1;
+            }
+            else{
+                peek = (nums[mid]>peek)? nums[index = mid] : peek;
+                end = mid;
+            }
+        }
+        return index;
+    }
     public static int singleNonDuplicate(int[] nums) {
         int xor =0;
 
