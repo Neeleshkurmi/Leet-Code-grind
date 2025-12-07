@@ -18,13 +18,76 @@ public class Solution {
 //        System.out.println(findKRotation(new int[]{6,7,8,1,2,3,4,5}));\\\
 //        System.out.println(singleNonDuplicate(new int[]{3,3,7,7,10,11,11}));
 //        System.out.println(findPeakElement(new int[] {1,2,1,3,5,6,4}));
+//        System.out.println(mySqrt(8));
+//        System.out.println(mySqrt(5));
+//        System.out.println(mySqrt(13));
+//        System.out.println(mySqrt(16));
+//        System.out.println(mySqrt(1));
+//        System.out.println(Math.sqrt(9));
 
-        System.out.println(mySqrt(8));
-        System.out.println(mySqrt(5));
-        System.out.println(mySqrt(13));
-        System.out.println(mySqrt(16));
-        System.out.println(mySqrt(1));
+        System.out.println(minEatingSpeed(new int[]{23,11,23,4,20},5));
     }
+    //dec 7
+    //https://leetcode.com/problems/koko-eating-bananas/
+    public static int minEatingSpeed(int[] piles, int h) {
+
+        int start = 1, end = maxR(piles);
+        int ans=1;
+
+        while(start<=end){
+            int mid = start+(end - start)/2;
+
+            if(speed(piles, mid)<=h){
+                ans = mid;
+                end = mid-1;
+            }
+            else{
+                start= mid+1;
+            }
+        }
+        return ans;
+    }
+
+    private static int maxR(int[] nums){
+        int max = nums[0];
+        for(int num:nums){
+            if(num>max) max= num;
+        }
+        return max;
+    }
+
+    private static long speed(int[] nums, int speed) {
+        long total = 0;
+        for (int i = 0; i < nums.length; i++) {
+            total += ceil(nums[i], speed);
+        }
+        return total;
+    }
+
+    private static int ceil(int num, int speed) {
+        return (num + speed - 1) / speed;
+    }
+
+
+    //https://www.geeksforgeeks.org/problems/find-nth-root-of-m5843/1
+    public static int nThRoot(int n, int m){
+        if(m==0) return 0;
+
+        int start =1, end =m;
+
+        while (start<=end){
+            int mid = (end+start)/2;
+            int ans = (int)(Math.pow(mid,n));
+
+            if(ans==m) return mid;
+
+            else if(ans>m) end = mid-1;
+
+            else start = mid+1;
+        }
+        return -1;
+    }
+
 
     //dec 6
     //https://leetcode.com/problems/sqrtx/submissions/1848606840
@@ -49,6 +112,7 @@ public class Solution {
         }
         return ans;
     }
+
     public static int findPeakElement(int[] nums) {
         int start = 0, end = nums.length-1, peek=Integer.MIN_VALUE;
         int index=0;
@@ -67,6 +131,7 @@ public class Solution {
         }
         return index;
     }
+
     public static int singleNonDuplicate(int[] nums) {
         int xor =0;
 
@@ -75,6 +140,7 @@ public class Solution {
         }
         return xor;
     }
+
     public static int findKRotation(int[] nums) {
         int index =0, ans =Integer.MAX_VALUE;
         int start = 0, end = nums.length-1;
@@ -93,6 +159,7 @@ public class Solution {
         }
         return index;
     }
+
     public static int findMin(int[] nums) {
         int ans= Integer.MAX_VALUE;
         int start = 0, end = nums.length-1;
@@ -111,6 +178,7 @@ public class Solution {
         }
         return ans;
     }
+
 
     //dec 5
     // variation 2 same question
