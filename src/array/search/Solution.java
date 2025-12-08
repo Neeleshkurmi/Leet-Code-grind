@@ -32,7 +32,7 @@ public class Solution {
     //dec 8
     public static int smallestDivisor(int[] nums, int threshold) {
         int ans =Integer.MAX_VALUE;
-        int start =1, end = max(nums);
+        int start =1, end = maxR(nums);
 
         while(start<=end){
             int mid = start+(end - start)/2;
@@ -54,14 +54,6 @@ public class Solution {
             sum+= ceil(num,div);
         }
         return sum;
-    }
-
-    private static int max(int[] nums) {
-        int max = Integer.MAX_VALUE;
-        for(int num: nums){
-            max = Math.max(num,max);
-        }
-        return max;
     }
 
     //dec 7
