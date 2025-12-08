@@ -26,7 +26,44 @@ public class Solution {
 //        System.out.println(Math.sqrt(9));
 
         System.out.println(minEatingSpeed(new int[]{23,11,23,4,20},5));
+        System.out.println(ceil(2,7));
+        System.out.println(smallestDivisor(new int[]{44,22,33,11,1},5));
     }
+    //dec 8
+    public static int smallestDivisor(int[] nums, int threshold) {
+        int ans =Integer.MAX_VALUE;
+        int start =1, end = max(nums);
+
+        while(start<=end){
+            int mid = start+(end - start)/2;
+            int sum = sum(nums,mid);
+            if(sum<=threshold){
+                ans = mid;
+                end = mid-1;
+            }
+            else{
+                start = mid+1;
+            }
+        }
+        return ans;
+    }
+
+    private static int sum(int[] nums, int div){
+        int sum=0;
+        for(int num: nums){
+            sum+= ceil(num,div);
+        }
+        return sum;
+    }
+
+    private static int max(int[] nums) {
+        int max = Integer.MAX_VALUE;
+        for(int num: nums){
+            max = Math.max(num,max);
+        }
+        return max;
+    }
+
     //dec 7
     //https://leetcode.com/problems/koko-eating-bananas/
     public static int minEatingSpeed(int[] piles, int h) {
