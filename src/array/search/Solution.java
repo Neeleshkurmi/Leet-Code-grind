@@ -35,18 +35,20 @@ public class Solution {
     //dec 8
 
     public static int findKthPositive(int[] nums, int k) {
-        int maxR= nums[nums.length-1]+k+1;
-        int count=0, j=0;
-        for(int i=1; i<=maxR; i++){
-            if(nums[j]!=i){
-                count++;
-                if(count==k) return i;
+        int start = 0, end = nums.length-1;
+
+        while(start<=end){
+            int mid = start+(end - start)/2;
+            int x = (nums[mid]-(mid+1));
+
+            if(x<k){
+                start = mid+1;
             }
             else {
-                j = j<nums.length-1? j+1: j;
+                end = mid -1;
             }
         }
-        return -1;
+        return start+k;
     }
     //https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
     public int shipWithinDays(int[] nums, int days) {
