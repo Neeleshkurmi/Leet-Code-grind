@@ -24,12 +24,71 @@ public class Solution {
 //        System.out.println(mySqrt(16));
 //        System.out.println(mySqrt(1));
 //        System.out.println(Math.sqrt(9));
+//        System.out.println(minEatingSpeed(new int[]{23,11,23,4,20},5));
+//        System.out.println(ceil(2,7));
+//        System.out.println(smallestDivisor(new int[]{44,22,33,11,1},5));
 
-        System.out.println(minEatingSpeed(new int[]{23,11,23,4,20},5));
-        System.out.println(ceil(2,7));
-        System.out.println(smallestDivisor(new int[]{44,22,33,11,1},5));
+        System.out.println(ceil(1,2));
+        System.out.println();
     }
+
     //dec 8
+    //https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
+    public int shipWithinDays(int[] nums, int days) {
+        int start = max(nums);
+        int end = sum(nums), ans =0;
+
+        while(start<=end){
+            int mid = start+(end - start)/2;
+            int re = pos(nums,mid);
+
+            if(re<=days){
+                ans = mid;
+                end = mid-1;
+            }
+            else{
+                start = mid+1;
+            }
+        }
+        return ans;
+    }
+
+    int max(int[] nums){
+        int max = Integer.MIN_VALUE;
+        for(int num: nums){
+            max = Math.max(max, num);
+        }
+        return max;
+    }
+
+    int sum(int[] nums){
+        int sum =0;
+        for(int num: nums){
+            sum+=num;
+        }
+        return sum;
+    }
+
+    int pos(int[] nums, int cap){
+        int sum =0, ans =0;
+        for(int i =0; i<nums.length; i++){
+            if(sum+nums[i]>cap){
+                ans++;
+                sum = nums[i];
+            }
+            else{
+                sum+=nums[i];
+            }
+        }
+        while(sum>0){
+            ans++;
+            sum -=cap;
+        }
+
+        return ans;
+    }
+
+    //https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/
     public static int smallestDivisor(int[] nums, int threshold) {
         int ans =Integer.MAX_VALUE;
         int start =1, end = maxR(nums);
