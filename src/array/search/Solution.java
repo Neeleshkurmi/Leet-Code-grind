@@ -29,10 +29,25 @@ public class Solution {
 //        System.out.println(smallestDivisor(new int[]{44,22,33,11,1},5));
 
         System.out.println(ceil(1,2));
-        System.out.println();
+        System.out.println(findKthPositive(new int[]{1,2,3,4},2));
     }
 
     //dec 8
+
+    public static int findKthPositive(int[] nums, int k) {
+        int maxR= nums[nums.length-1]+k+1;
+        int count=0, j=0;
+        for(int i=1; i<=maxR; i++){
+            if(nums[j]!=i){
+                count++;
+                if(count==k) return i;
+            }
+            else {
+                j = j<nums.length-1? j+1: j;
+            }
+        }
+        return -1;
+    }
     //https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
     public int shipWithinDays(int[] nums, int days) {
         int start = max(nums);
