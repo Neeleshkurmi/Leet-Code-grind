@@ -11,6 +11,17 @@ public class Solution {
 
     }
 
+    //dec 16
+    public static String convertToTable(int n){
+        StringBuilder sb = new StringBuilder();
+        while(n>0){
+            n--;
+            sb.append((char)('A'+(n%26)));
+            n/=26;
+        }
+        sb.reverse();
+        return sb.toString();
+    }
     //dec 13 2025
     public static boolean check(int[] nums) {
         int count =0;
