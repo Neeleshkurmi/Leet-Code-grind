@@ -32,6 +32,18 @@ public class Solution {
         System.out.println(minimumDifference(new int[]{9,4,1,7},2));
     }
 
+    //dec 16
+    public static String convertToTable(int n){
+        StringBuilder sb = new StringBuilder();
+        while(n>0){
+            n--;
+            sb.append((char)('A'+(n%26)));
+            n/=26;
+        }
+        sb.reverse();
+        return sb.toString();
+    }
+
     //dec 7
     //https://leetcode.com/problems/koko-eating-bananas/
     public static int minEatingSpeed(int[] piles, int h) {
