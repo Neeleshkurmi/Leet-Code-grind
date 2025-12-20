@@ -24,7 +24,7 @@ public class Main {
     }
 
     static void generateSubsequences(int[] arr, int index, List<Integer> current, List<List<Integer>> result) {
-        if(index== arr.length) {
+        if(index == arr.length) {
             result.add(new ArrayList<>(current));
             return;
         }
