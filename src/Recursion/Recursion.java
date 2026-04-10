@@ -130,4 +130,29 @@ public class Recursion{
             dfs(curr + ch, index + 1, digits, res, map);
         }
     }
+
+
+    public List<List<Integer>> combinationSum3(int k, int n) {
+        List<List<Integer>> res = new ArrayList<>();
+
+        dfs(1, k, n, 0, new ArrayList<>(), res);
+        return res;
+    }
+
+    void dfs(int num, int k, int n, int sum, List<Integer> temp, List<List<Integer>> res){
+
+        if(temp.size() == k){
+            if(sum == n){
+                res.add(new ArrayList<>(temp));
+                return;
+            }
+            return;
+        }
+
+        for(int i=num; i<=9; i++){
+            temp.add(i);
+            dfs(i+1, k, n, sum+i, temp, res);
+            temp.removeLast();
+        }
+    }
 }
