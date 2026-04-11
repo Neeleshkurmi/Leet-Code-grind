@@ -5,18 +5,32 @@ public class Recursion{
     public static void main(String[] a){
         List<List<String>> list = new ArrayList<>();
 
-        // permute("aabaa", 0, "", list);
+        // // permute("aabaa", 0, "", list);
         // solve("aabaa", 0, new ArrayList<>(), list);
 
         // System.out.println(list);
 
-        System.out.println(isAnagram("abaaca", "caabaa"));
+        // System.out.println(isAnagram("abaaca", "caabaa"));
 
-        // System.out.println((int)'b');
-        // System.out.println((int)'c');
-        //     "abca", "caba"
-        // ));
+        // // System.out.println((int)'b');
+        // // System.out.println((int)'c');
+        // //     "abca", "caba"
+        // // ));
 
+        List<List<String>> res = new ArrayList<>();
+        char[][] ch = new char[4][4];
+
+        for(int i=0; i<ch.length; i++){
+            Arrays.fill(ch[i], '.');
+        }
+
+        nQueens(0, ch, res);
+
+        for(int i=0; i<res.size(); i++){
+            for(int j=0; j<res.get(i).size(); j++){
+                System.out.println(res.get(i).get(j));
+            }
+        }
 
     }
 
@@ -75,6 +89,7 @@ public class Recursion{
 
         for(int i = index; i<s.length(); i++){
             String sub = s.substring(index, i+1);
+
             if(isPalindrome(sub)){
                 temp.add(sub);
                 solve(s, i+1, temp, res);
@@ -154,5 +169,48 @@ public class Recursion{
             dfs(i+1, k, n, sum+i, temp, res);
             temp.removeLast();
         }
+    }
+    
+    public static void nQueens(int row, char[][] grid, List<List<String>> res){
+        if(row == grid.length){
+            List<String> temp = new ArrayList<>();
+            for(int i=0; i<grid.length; i++){
+                temp.add(new String(grid[i]));
+            }
+            res.add(new ArrayList<>(temp));
+            return;
+        }
+
+        for(int col = 0; col < grid[row].length; col++){
+            if(isSafe(row, col, grid)){
+                grid[row][col] = 'Q';
+                nQueens(row + 1, grid, res);
+                grid[row][col] = '.';
+            }
+        }
+    }
+
+    public static boolean isSafe(int row, int col, char[][] grid){
+
+        // serach in the same column
+        for(int i=0; i < row;i++){
+            if(grid[i][col] == 'Q') return false;
+        }
+
+        // serach upper left diagonal 
+        int i=row, j = col;
+        while(i >= 0 && j >=0){
+            if(grid[i][j] == 'Q') return false;
+            i--; j--;
+        }
+        i=row; j= col;
+
+        // serach upper right diagonal
+        while(i >=0 && j < grid.length){
+            if(grid[i][j] == 'Q') return false;
+            i--; j++;
+        }
+
+        return true;
     }
 }
