@@ -5,7 +5,8 @@ public class SodukuSolver {
     public static List<int[][]> res = new ArrayList<>();
 
     public static void main(String[] a){
-        // Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
+
 
         char[][] board =   {
                                 {'5', '3', '.', '.', '7', '.', '.', '.', '.'},
@@ -21,7 +22,9 @@ public class SodukuSolver {
 
         solveSudoku(board);
 
-        System.out.println(Arrays.deepToString(board));
+        // System.out.println(Arrays.deepToString(board));
+
+        System.out.println(Arrays.toString(maxSlidingWinodw(new int[]{1,3,-1,-3,5,3,6,7}, 3)));
     }
 
     public static void solveSudoku(char[][] board) {
@@ -58,5 +61,27 @@ public class SodukuSolver {
             }
         }
         return true;
+    }
+
+    private static int[] maxSlidingWinodw(int[] nums, int k){
+        if(nums.length ==0 || k==0) return nums;
+
+        int n = nums.length;
+        int[] ans = new int[n-k+1];
+        Deque<Integer> d = new ArrayDeque<>();
+
+        for(int i=0; i<n; i++){
+
+            while(d.size() > 0 && d.peekFirst() <= i-k) d.pollFirst();
+
+            while(d.size() > 0 && nums[d.peekLast()] < nums[i]) d.pollLast();
+
+            d.offerLast(i);
+
+            if(i >= k-1){
+                ans[i-k+1] = nums[d.peekFirst()];
+            }
+        }
+        return ans;
     }
 }
