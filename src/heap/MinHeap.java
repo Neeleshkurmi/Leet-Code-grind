@@ -10,7 +10,7 @@ public class MinHeap {
         }
 
         while(!pq.isEmpty()) {
-            System.out.print(pq.poll() + ", ");
+            System.out.print("[" + pq.poll() + "] , ");
         }
     }
 }
