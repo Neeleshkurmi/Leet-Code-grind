@@ -13,4 +13,8 @@ public class MinHeap {
             System.out.print("[" + pq.poll() + "] , ");
         }
     }
+
+    public void helperFunction(int n) {
+        return;
+    }
 }
