@@ -8,6 +8,12 @@ public class Main {
     private static String globalText;
 
     public static void main(String[] args) {
+
+        // Bug 4: String comparison using '==' instead of '.equals()'
+        String name1 = new String("Java");
+        String name2 = new String("Java");
+
+
         System.out.println("Starting the buggy program...");
 
         // Bug 2: Compile-time error - missing semicolon
@@ -16,9 +22,6 @@ public class Main {
         // Bug 3: Arithmetic exception - division by zero
         int result = 50 / 0;
 
-        // Bug 4: String comparison using '==' instead of '.equals()'
-        String name1 = new String("Java");
-        String name2 = new String("Java");
         if (name1 == name2) {
             System.out.println("Strings are equal!");
         }

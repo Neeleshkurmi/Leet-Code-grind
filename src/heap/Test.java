@@ -22,9 +22,6 @@ public class Test {
             }
         }
 
-
-
-
         // The Problem: Attempting to remove an item while iterating with a for-each loop
         for (String item : items) {
             if (item.equals("Banana")) {
@@ -34,8 +31,6 @@ public class Test {
 
         System.out.println(items);
     }
-
-
 
     public void printLength(String str) {
         System.out.println(str.length()); // Throws NPE if str is null
