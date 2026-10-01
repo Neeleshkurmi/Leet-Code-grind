@@ -35,6 +35,8 @@ public class Test {
         System.out.println(items);
     }
 
+
+
     public void printLength(String str) {
         System.out.println(str.length()); // Throws NPE if str is null
     }
