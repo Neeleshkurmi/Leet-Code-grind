@@ -39,4 +39,7 @@ public class Test {
         System.out.println(str.length()); // Throws NPE if str is null
     }
 
+
+
+
 }
