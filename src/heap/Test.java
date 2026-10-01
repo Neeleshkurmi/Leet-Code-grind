@@ -6,9 +6,9 @@ import java.util.List;
 public class Test {
     public static void main(String[] args) {
         List<String> items = new ArrayList<>();
-        items.add("Apple")
-        items.add("Banana")
-        items.add("Cherry")
+        items.add("Apple");
+        items.add("Banana");
+        items.add("Cherry");
 
         String input = new String("hello");
         if (input == "hello") { // Evaluates to false!
