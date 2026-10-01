@@ -59,12 +59,12 @@ public class Dll {
 //    }
 
     private void display() {
-        System.out.print("HEAD-->");
-        Node temp = head;
-        while (temp!=null){
-            System.out.print(STR."\{temp.val}<-->");
-            temp = temp.next;
-        }
-        System.out.print("END");
+//        System.out.print("HEAD-->");
+//        Node temp = head;
+//        while (temp!=null){
+//            System.out.print("\{temp.val}<-->");
+//            temp = temp.next;
+//        }
+//        System.out.print("END");
     }
 }
