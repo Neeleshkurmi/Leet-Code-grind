@@ -9,6 +9,18 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // Bug 6: ConcurrentModificationException (modifying a list while iterating)
+        List<String> items = new ArrayList<>();
+        items.add("Apple");
+        items.add("Banana");
+        items.add("Cherry");
+
+        for (String item : items) {
+            if (item.equals("Banana")) {
+                items.remove(item);
+            }
+        }
+
         // Bug 4: String comparison using '==' instead of '.equals()'
         String name1 = new String("Java");
         String name2 = new String("Java");
@@ -30,18 +42,6 @@ public class Main {
         int[] numbers = {1, 2, 3, 4, 5};
         for (int i = 0; i <= numbers.length; i++) {
             System.out.println(numbers[i]);
-        }
-
-        // Bug 6: ConcurrentModificationException (modifying a list while iterating)
-        List<String> items = new ArrayList<>();
-        items.add("Apple");
-        items.add("Banana");
-        items.add("Cherry");
-
-        for (String item : items) {
-            if (item.equals("Banana")) {
-                items.remove(item);
-            }
         }
 
         // Bug 7: Logical error - infinite loop due to wrong update condition
