@@ -15,6 +15,13 @@ public class Test {
             System.out.println("Match found");
         }
 
+        List<String> list = new ArrayList<>(List.of("A", "B", "C"));
+        for (String item : list) {
+            if (item.equals("B")) {
+                list.remove(item); // Throws ConcurrentModificationException!
+            }
+        }
+
 
         // The Problem: Attempting to remove an item while iterating with a for-each loop
         for (String item : items) {
